@@ -22,11 +22,12 @@ const UploadPage = () => {
     formData.append('title', title);
     formData.append('description', description);
     formData.append('image', image);
-
+// set request to no-cors
     try {
-      const response = await fetch('http://localhost:3001/api/upload', {
+      const response = await fetch('https://ecom.thirstymart.in/api/posts/add', {
         method: 'POST',
         body: formData,
+        mode: 'no-cors',
       });
 
       const data = await response.json();
@@ -44,7 +45,7 @@ const UploadPage = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/posts');
+        const response = await fetch('https://ecom.thirstymart.in/api/posts/all');
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
@@ -95,18 +96,16 @@ const UploadPage = () => {
       </form>
       {message && <p>{message}</p>}
 
-
-
       <div>
         <h1>Uploaded Posts</h1>
         {error && <p>Error: {error}</p>}
         <ul>
           {posts.map(post => (
-            <li key={post.id} className='border p-4 m-4 rounded-md '>
+            <li key={post.title} className='border p-4 m-4 rounded-md '>
               <h2>{post.title}</h2>
               <p>{post.description}</p>
-              <a target='_blank'>{`http://localhost:3001${post.image_path}`}</a>
-              <img src={`http://localhost:3001${post.image_path}`} alt={post.title}  />
+              <a target='_blank'>{`http://localhost:3001${post.image}`}</a>
+              <img src={`http://localhost:3001${post.image}`} alt={post.title}  />
               {/* <p>Uploaded on: {new Date(post.created_at).toLocaleString()}</p> */}
             </li>
           ))}
