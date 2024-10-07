@@ -1,12 +1,9 @@
 "use client";
 import { useState, useEffect } from 'react';
-import Navbar from '@/app/components/navbar';
+import Navbar from '@/app/components/Navbar';
 import Image from 'next/image';
 import { FaAnglesRight } from "react-icons/fa6";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-import { FaArrowCircleRight } from "react-icons/fa";
-import { FaArrowCircleLeft } from "react-icons/fa";
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
