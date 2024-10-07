@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Mario Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        // Get the canvas and set up the context
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Game variables
+        const gravity = 0.5;
+        const playerSpeed = 5;
+        const jumpHeight = 15;
+
+        let player = {
+            x: 50,
+            y: canvas.height - 100,
+            width: 50,
+            height: 50,
+            velocityX: 0,
+            velocityY: 0,
+            isJumping: false,
+            color: 'blue'
+        };
+
+        // Keys
+        let keys = {
+            left: false,
+            right: false,
+            up: false
+        };
+
+        // Event listeners for key presses
+        window.addEventListener('keydown', function (e) {
+            if (e.code === 'ArrowLeft') keys.left = true;
+            if (e.code === 'ArrowRight') keys.right = true;
+            if (e.code === 'Space') keys.up = true;
+        });
+
+        window.addEventListener('keyup', function (e) {
+            if (e.code === 'ArrowLeft') keys.left = false;
+            if (e.code === 'ArrowRight') keys.right = false;
+            if (e.code === 'Space') keys.up = false;
+        });
+
+        // Function to update the player's position
+        function updatePlayer() {
+            if (keys.left) player.velocityX = -playerSpeed;
+            else if (keys.right) player.velocityX = playerSpeed;
+            else player.velocityX = 0;
+
+            // Jump logic
+            if (keys.up && !player.isJumping) {
+                player.isJumping = true;
+                player.velocityY = -jumpHeight;
+            }
+
+            // Apply gravity
+            player.velocityY += gravity;
+
+            // Update position
+            player.x += player.velocityX;
+            player.y += player.velocityY;
+
+            // Collision with the ground
+            if (player.y + player.height >= canvas.height) {
+                player.y = canvas.height - player.height;
+                player.isJumping = false;
+            }
+        }
+
+        // Function to draw the player
+        function drawPlayer() {
+            ctx.fillStyle = player.color;
+            ctx.fillRect(player.x, player.y, player.width, player.height);
+        }
+
+        // Game loop
+        function gameLoop() {
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update and draw the player
+            updatePlayer();
+            drawPlayer();
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start the game loop
+        gameLoop();
+
+    </script>
+</body>
+
+</html>

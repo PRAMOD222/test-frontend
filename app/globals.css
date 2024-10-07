@@ -3,4 +3,14 @@
 @tailwind utilities;
 
 
+:root {
+  --font-mulish-sans: 'Mulish', sans-serif;
+}
 
+body {
+  font-family: var(--font-mulish-sans), sans-serif;
+}
+
+.cormorant {
+  font-family: var(--font-cormorant-sans), sans-serif;
+}

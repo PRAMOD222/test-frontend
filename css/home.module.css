@@ -1,0 +1,97 @@
+
+
+.line::after {
+    content: '';
+    background-image: url('/line.svg');
+    background-repeat: repeat-x;
+    height: 6px;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    width: 100%;
+}
+.shortline {
+    content: '';
+    background-image: url('/line.svg');
+    background-repeat: repeat-x;
+    height: 6px;
+    z-index: 1;
+    left: 0;
+}
+.verticalLine{
+    content: '';
+    background-image: url('/line.svg');
+    rotate: 90deg;
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    z-index: 1;
+    left: 0;
+    border: 1px solid white;
+}
+
+.product1{
+    background-image: url('/2.png');  
+}
+
+.product2{
+    background-image: url('/3.png');
+}
+
+.product3{
+    background-image: url('/1.png');
+}
+
+.product4{
+    background-image: url('/4.png');
+}
+
+.section2Bg{
+    background-image: url('/homebg2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-attachment: fixed; */
+}
+
+.contactBg{
+    background-image: url('/contact.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.aboutBg{
+    background-image: url('/aboutbg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: opacity(80%);
+}
+.about3{
+    background-image: url('/about3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* filter: opacity(80%); */
+}
+
+.spin{
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    width: 20%;
+    aspect-ratio: 1/1;
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
