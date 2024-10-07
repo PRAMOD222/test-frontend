@@ -3,9 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react';
 import Styles from '@/css/home.module.css'
-import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
 import { motion } from "framer-motion";
-import Navbar from './components/navbar';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
