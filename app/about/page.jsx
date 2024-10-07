@@ -17,7 +17,7 @@ const About = () => {
                 {/* <Image className="object-cover h-[60vh] origin-center relative bg-fixed" src="/contact.jpg" alt="contact" width={2000} height={2000} /> */}
                 <div className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  ">
                     <h2 className="text-center text-5xl  text-white cormorant my-2">About</h2>
-                    <h2 className="text-center uppercase flex gap-4 mx-auto"><span className="">home </span> // <span>About</span></h2>
+                    <h2 className="text-center uppercase flex gap-4 mx-auto"><span className="">home </span> \\ <span>About</span></h2>
                 </div>
             </section>
 
