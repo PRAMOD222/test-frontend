@@ -191,13 +191,13 @@ const Page = () => {
                 <div className="absolute w-full z-20">
                     <nav className={` ${Styles.line}  mx-32 relative`}>
                         <ul className='flex mx-20 my-10 justify-between text-xl '>
-                            <li>Bar Cakes</li>
-                            <li>Toast</li>
-                            <li>Lavash</li>
-                            <li>Cheese Straws</li>
-                            <li>About +</li>
-                            <li>Enquire Now</li>
-                            <li>Contact</li>
+                            <li> <Link href={'/products/barcakes'} className=''>Bar Cakes </Link></li>
+                            <li> <Link href={'/products/toasts'} className=''>Toast </Link></li>
+                            <li> <Link href={'/products/lavash'} className=''>Lavash </Link></li>
+                            <li> <Link href={'/products/cheesestraws'} className=''>Cheese Straws </Link></li>
+                            <li> <Link href={'/about'} className=''>About + </Link></li>
+                            <li> <Link href={'/'} className=''>Enquire Now </Link></li>
+                            <li> <Link href={'/contact'} className=''>Contact </Link></li>
                         </ul>
                         {/* <Image className='' src="/line.png" alt="line" width={1000} height={10} /> */}
 
