@@ -333,7 +333,7 @@ const Page = () => {
                     </div>
                 </section>
 
-                <section className='mx-32 mb-20'>
+                <section className='mx-32 py-20'>
 
                     <div className="flex justify-between">
                         <div className="">
