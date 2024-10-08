@@ -38,7 +38,7 @@ const Page = ({ params }) => {
     const otherCategories = categories.filter(category => category !== params.slug);
 
     return (
-        <div className='text-white bg-black border border-gray-50/0'>
+        <div className='text-white bg-black border border-gray-50/0 min-h-screen'>
             <div className="mx-32">
                 <Navbar />
             </div>
