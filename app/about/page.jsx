@@ -1,6 +1,7 @@
 import Styles from '@/css/home.module.css'
 import Navbar from "@/app/components/Navbar"
 import Footer from "@/app/components/Footer"
+import MobileNav from "@/app/components/MobileNav"
 import Image from 'next/image';
 import { FaRegFileAlt } from "react-icons/fa";
 
@@ -10,6 +11,9 @@ const About = () => {
             <div className="sticky top-0 bg-black z-30">
                 <div className="mx-32">
                     <Navbar />
+                </div>
+                <div className="sticky top-0 bg-[#100f10]">
+                    <MobileNav />
                 </div>
             </div>
 
@@ -22,8 +26,8 @@ const About = () => {
             </section>
 
             <section>
-                <div className="flex  mx-32 gap-8 py-8">
-                    <div className=" w-1/2 space-y-8">
+                <div className="flex flex-col md:flex-row mx-6 md:mx-32 gap-4 md:gap-8 py-4 md:py-8">
+                    <div className=" md:w-1/2 space-y-8">
                         <h2 className='cormorant text-4xl'>Lorem ipsum dolor <span className='text-[#c19f5f]'> sit amet </span> consectetur adipisicing elit. </h2>
 
                         <p className='text-gray-500 '>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis in a exercitationem deserunt labore consequatur, dignissimos rem, fuga dolor voluptatem culpa saepe excepturi suscipit.</p>
@@ -36,7 +40,7 @@ const About = () => {
                         <button type="submit" className="border rounded-full w-[40%] py-5 border-[#c19f5f] hover:bg-[#c19f5f] hover:text-neutral-950 transition-all duration-300">Read More </button>
 
                     </div>
-                    <div className=" w-1/2 flex gap-8 p-4">
+                    <div className=" md:w-1/2 flex gap-8 md:p-4">
                         <div className="w-1/2 ">
                             <Image width={4160} height={4160} src="/about1.jpg" alt="about" className='border border-[#c19f5f] rounded-md' />
                         </div>
@@ -45,14 +49,15 @@ const About = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mx-32">
+
+                <div className="mx-6 md:mx-32">
                     <div className={`${Styles.shortline} `}></div>
                 </div>
 
             </section>
 
             <section>
-                <div className="flex mx-32 my-20 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 mx-6 md:mx-32 my-10 md:my-20 gap-4 md:gap-8">
 
                     <div className=" flex justify-center items-center gap-4">
                         <Image width={200} height={200} src="/organic.svg" alt="about" className='w-1/4' />
@@ -62,7 +67,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className=" flex justify-center items-center gap-4">
+                    <div className="flex-row-reverse md:flex-row flex justify-center items-center gap-4">
                         <Image width={200} height={200} src="/organic.svg" alt="about" className='w-1/4' />
                         <div>
                             <h2 className='cormorant text-2xl' >Natural Organic Product</h2>
@@ -90,32 +95,54 @@ const About = () => {
                 </div>
             </section>
 
-            <section className='mx-32 py-20'>
+            <section className='mx-6 md:mx-32 py-10 md:py-20'>
 
-                <div className="flex justify-between">
-                    <div className="">
-                        <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                        <h3 className='cormorant text-4xl '>Stores</h3>
-                    </div>
-                    <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
+            <div className="md:flex justify-between hidden">
+                        <div className="">
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+                        <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
-                    <div className="">
-                        <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                        <h3 className='cormorant text-4xl '>Stores</h3>
-                    </div>
-                    <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
+                        <div className="">
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+                        <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
-                    <div className="">
-                        <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                        <h3 className='cormorant text-4xl '>Stores</h3>
-                    </div>
-                    <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
+                        <div className="">
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+                        <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
-                    <div className="">
-                        <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                        <h3 className='cormorant text-4xl '>Stores</h3>
+                        <div className="">
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
                     </div>
-                </div>
+
+                    <div className='md:hidden grid grid-cols-2 gap-4'>
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+                    </div>
 
 
             </section>

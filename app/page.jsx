@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Styles from '@/css/home.module.css'
 import { motion } from "framer-motion";
 import Navbar from './components/Navbar';
+import MobileNav from './components/MobileNav';
 import Footer from './components/Footer';
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
@@ -59,7 +60,7 @@ const Page = () => {
 
     useEffect(() => {
         console.log("base api", baseApi);
-        
+
         fetchProducts();
         const handleScroll = () => {
             if (window.scrollY > 100) {
@@ -82,11 +83,11 @@ const Page = () => {
         switch (activeTab) {
             case 'Bar Cakes':
                 return (
-                    <div className="products grid grid-cols-2 gap-10">
+                    <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
 
                         {products.barcakes && products.barcakes.map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`http://localhost:3001/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
@@ -108,7 +109,7 @@ const Page = () => {
                     <div className="products grid grid-cols-2 gap-10">
                         {products.toasts && products.toasts.map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`http://localhost:3001/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
@@ -130,7 +131,7 @@ const Page = () => {
                     <div className="products grid grid-cols-2 gap-10">
                         {products.cheesestraws && products.cheesestraws.map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`http://localhost:3001/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
@@ -152,7 +153,7 @@ const Page = () => {
                     <div className="products grid grid-cols-2 gap-10">
                         {products.lavash && products.lavash.map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`http://localhost:3001/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
@@ -182,22 +183,28 @@ const Page = () => {
                 transition={{ duration: 0.5 }}
                 className="fixed top-0 left-0 w-full z-50 bg-black text-white py-4 shadow-lg "
             >
-                <div className="mx-32">
+                <div className="mx-32 ">
                     <Navbar />
                 </div>
             </motion.nav>
+
+            <div className="">
+                <MobileNav />
+            </div>
+
             <main className={` `}>
 
-                <div className="absolute w-full z-20">
+
+                <div className="absolute w-full z-20 hidden md:block">
                     <nav className={` ${Styles.line}  mx-32 relative`}>
                         <ul className='flex mx-20 my-10 justify-between text-xl '>
-                            <li>Bar Cakes</li>
-                            <li>Toast</li>
-                            <li>Lavash</li>
-                            <li>Cheese Straws</li>
-                            <li>About +</li>
-                            <li>Enquire Now</li>
-                            <li>Contact</li>
+                            <li> <Link href={'/products/barcakes'} className=''>Bar Cakes </Link></li>
+                            <li> <Link href={'/products/toasts'} className=''>Toast </Link></li>
+                            <li> <Link href={'/products/lavash'} className=''>Lavash </Link></li>
+                            <li> <Link href={'/products/cheesestraws'} className=''>Cheese Straws </Link></li>
+                            <li> <Link href={'/about'} className=''>About + </Link></li>
+                            <li> <Link href={'/'} className=''>Enquire Now </Link></li>
+                            <li> <Link href={'/contact'} className=''>Contact </Link></li>
                         </ul>
                         {/* <Image className='' src="/line.png" alt="line" width={1000} height={10} /> */}
 
@@ -229,12 +236,12 @@ const Page = () => {
                     </div>
                 </div> */}
 
-                <div className="relative h-[130vh] z-10">
+                <div className="relative h-[100vh] md:h-[130vh] z-10">
                     {/* Arrows */}
-                    <button onClick={prevSlide} className="absolute left-32 top-1/2 text-6xl z-20">
+                    <button onClick={prevSlide} className="absolute left-4 md:left-32 top-[20%] md:top-1/2 text-6xl z-20">
                         &larr;
                     </button>
-                    <button onClick={nextSlide} className="absolute right-32 top-1/2 text-6xl z-20">
+                    <button onClick={nextSlide} className="absolute right-4 md:right-32 top-[20%] md:top-1/2 text-6xl z-20">
                         &rarr;
                     </button>
 
@@ -263,18 +270,18 @@ const Page = () => {
                                     <Image className='w-44' src={"/logo.png"} alt="hero" width={100} height={100} />
                                 </div>
                                 <h2 className="cormorant text-white text-8xl font-bold">{slide.title}</h2>
-                                <h2 className="cormorant text-6xl text-[#c19f5f] font-[500] my-3 whitespace-nowrap">{slide.subtitle}</h2>
-                                <p className='text-[20px]  text-center w-1/2'>Lightly toasted and irresistibly crunchy, our toast is made to elevate your snacking experience with every bite.</p>
+                                <h2 className="cormorant text-3xl text-center md:text-6xl text-[#c19f5f] font-[500] my-3 md:whitespace-nowrap">{slide.subtitle}</h2>
+                                <p className='text-[20px]  text-center w-3/4 md:w-1/2'>Lightly toasted and irresistibly crunchy, our toast is made to elevate your snacking experience with every bite.</p>
                                 <button className='text-[#c19f5f] text-xl uppercase border border-[#c19f5f] px-14 py-4 rounded-full mt-8'>Shop Now</button>
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
-                <section className='mx-32 '>
-                    <div className="flex justify-between ">
+                <section className='mx-6 md:mx-32 '>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-                        <div className={` w-[24%]  -translate-y-6 z-40 overflow-hidden`}>
+                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
                             <div className={`${Styles.product1} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -284,7 +291,8 @@ const Page = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={` w-[24%]  -translate-y-6 z-40 overflow-hidden`}>
+
+                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
                             <div className={`${Styles.product2} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -294,7 +302,8 @@ const Page = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={` w-[24%]  -translate-y-6 z-40 overflow-hidden`}>
+
+                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
                             <div className={`${Styles.product3} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -304,7 +313,8 @@ const Page = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className={` w-[24%]  -translate-y-6 z-40 overflow-hidden`}>
+
+                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
                             <div className={`${Styles.product4} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -315,27 +325,25 @@ const Page = () => {
                             </div>
                         </div>
 
-
-
                     </div>
                 </section>
 
                 <section className={`${Styles.section2Bg}`}>
-                    <div className='mx-32'>
+                    <div className='mx-6 md:mx-32'>
 
-                        <div className="text w-1/2 py-32  ">
+                        <div className="text w-full md:w-1/2 py-6 md:py-32  ">
                             <h2 className='cormorant text-4xl text-[#c19f5f]'>DISCOVER A NEW LEVEL OF TAS E</h2>
                             <div className={`${Styles.shortline} w-1/2 my-4`}></div>
-                            <p className='text-2xl leading-[50px]'>At Al Forno, we take great care and pride in crafting products that offer a flavorful culinary experience. Our handcrafted creations are baked throughout the day in our ovens, ensuring freshness and quality in every bite.</p><p className='text-2xl leading-[50px] mt-8'> From our flavored toasts and French cheese straws to lavash, tea cakes and much more, we bring you a diverse selection of treats.</p>
+                            <p className='text-2xl md:leading-[50px]'>At Al Forno, we take great care and pride in crafting products that offer a flavorful culinary experience. Our handcrafted creations are baked throughout the day in our ovens, ensuring freshness and quality in every bite.</p><p className='text-2xl md:leading-[50px] mt-8'> From our flavored toasts and French cheese straws to lavash, tea cakes and much more, we bring you a diverse selection of treats.</p>
                             <button className='text-[#c19f5f] text-xl uppercase border border-[#c19f5f] px-14 py-4 rounded-full mt-8'>Read More</button>
                         </div>
 
                     </div>
                 </section>
 
-                <section className='mx-32 py-20'>
+                <section className='mx-6 md:mx-32 py-6 md:py-20'>
 
-                    <div className="flex justify-between">
+                    <div className="md:flex justify-between hidden">
                         <div className="">
                             <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
                             <h3 className='cormorant text-4xl '>Stores</h3>
@@ -360,31 +368,53 @@ const Page = () => {
                         </div>
                     </div>
 
-                    <div className='pt-20 pb-16'>
-                        <div className="flex justify-center items-center flex-col">
-                            <h2 className='uppercase text-xl text-[#c19f5f] '>Shop online</h2>
-                            <h2 className='text-6xl cormorant mt-4 mb-5'>Discover our Delicacies</h2>
-                            <div className={`${Styles.shortline} w-[20vw]`}></div>
+                    <div className='md:hidden grid grid-cols-2 gap-4'>
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
                         </div>
 
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+
+                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-4xl '>Stores</h3>
+                        </div>
+                    </div>
+
+                    <div className='pt-10 pb-8 md:pt-20 md:pb-16'>
+                        <div className="flex justify-center items-center flex-col">
+                            <h2 className='uppercase text-xl text-[#c19f5f] '>Shop online</h2>
+                            <h2 className='text-4xl md:text-6xl cormorant mt-4 mb-5'>Discover our Delicacies</h2>
+                            <div className={`${Styles.shortline} w-[20vw]`}></div>
+                        </div>
                     </div>
 
                     <div className="tab section">
-                        <div className="tabs flex justify-center space-x-16 my-10">
+
+                        <div className="tabs flex justify-center space-x-4 md:space-x-16 my-4 md:my-10">
                             <div onClick={() => setActiveTab('Bar Cakes')} className="cursor-pointer">
-                                <h2 className={`text-4xl cormorant ${activeTab === 'Bar Cakes' ? 'text-[#c19f5f]' : ''}`}>Bar Cakes</h2>
+                                <h2 className={`text-xl md:text-4xl cormorant ${activeTab === 'Bar Cakes' ? 'text-[#c19f5f]' : ''}`}>Bar Cakes</h2>
                                 <div className={`${Styles.shortline} mt-2`}></div>
                             </div>
                             <div onClick={() => setActiveTab('Toasts')} className="cursor-pointer">
-                                <h2 className={`text-4xl cormorant ${activeTab === 'Toasts' ? 'text-[#c19f5f]' : ''}`}>Toasts</h2>
+                                <h2 className={`text-xl md:text-4xl cormorant ${activeTab === 'Toasts' ? 'text-[#c19f5f]' : ''}`}>Toasts</h2>
                                 <div className={`${Styles.shortline} mt-2`}></div>
                             </div>
                             <div onClick={() => setActiveTab('Cheese Straw')} className="cursor-pointer">
-                                <h2 className={`text-4xl cormorant ${activeTab === 'Cheese Straw' ? 'text-[#c19f5f]' : ''}`}>Cheese Straw</h2>
+                                <h2 className={`text-xl md:text-4xl cormorant ${activeTab === 'Cheese Straw' ? 'text-[#c19f5f]' : ''}`}>Cheese Straw</h2>
                                 <div className={`${Styles.shortline} mt-2`}></div>
                             </div>
                             <div onClick={() => setActiveTab('Lavash')} className="cursor-pointer">
-                                <h2 className={`text-4xl cormorant ${activeTab === 'Lavash' ? 'text-[#c19f5f]' : ''}`}>Lavash</h2>
+                                <h2 className={`text-xl md:text-4xl cormorant ${activeTab === 'Lavash' ? 'text-[#c19f5f]' : ''}`}>Lavash</h2>
                                 <div className={`${Styles.shortline} mt-2`}></div>
                             </div>
                         </div>

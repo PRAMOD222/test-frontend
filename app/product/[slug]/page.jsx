@@ -3,6 +3,7 @@ import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
 
@@ -53,20 +54,21 @@ const Page = ({ params }) => {
         }
     };
 
-
     useEffect(() => {
         fetchProduct();
     }, []);
 
     const handleImageClick = (img) => {
-        setMainImage(img); // Update the main image when a smaller image is clicked
+        setMainImage(img);
     };
 
     return (
         <div className="bg-black">
+
             <div className="mx-32 sticky top-0 left-0">
                 <Navbar />
             </div>
+
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="mx-32 py-24">
                     {product ? (
@@ -102,9 +104,9 @@ const Page = ({ params }) => {
                                 </div>
 
                                 <div className="flex gap-4">
-                                    <button className="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
+                                    <Link href={`/checkout/${product._id}`} className="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
                                         Buy Now
-                                    </button>
+                                    </Link>
                                     <button
                                         className="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded"
                                         onClick={() => addToCart(product._id)}  // Pass product ID here

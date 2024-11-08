@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
+import MobileNav from '@/app/components/MobileNav';
 import Image from 'next/image';
 import { FaAnglesRight } from "react-icons/fa6";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -42,13 +44,16 @@ const Page = ({ params }) => {
             <div className="mx-32">
                 <Navbar />
             </div>
+            <div className="sticky top-0 bg-[#100f10]">
+                <MobileNav />
+            </div>
 
             {/* Display Products for the selected category (slug) */}
-            <section className='mx-32'>
+            <section className='mx-6 md:mx-32'>
                 <h2 className="text-2xl font-bold mt-4 mb-2">
                     {params.slug.charAt(0).toUpperCase() + params.slug.slice(1)}
                 </h2>
-                <div className="main-products grid grid-cols-4 gap-8">
+                <div className="main-products grid md:grid-cols-4 grid-cols-1 gap-8">
                     {filteredCategory.length > 0 ? (
                         filteredCategory.map((product) => (
                             <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group hover:scale-105 transition-all duration-300">
@@ -75,14 +80,8 @@ const Page = ({ params }) => {
                                     <p className='text-green-500'>{product.discount} % off</p>
                                     <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>
                                 </div>
-                                <Dialog>
-                                    <DialogTrigger>
-                                        <button className=''>View More <FaAnglesRight className='inline ' /></button>
-                                    </DialogTrigger>
-                                    <DialogContent>
-                                        <ProductItem product={product} />
-                                    </DialogContent>
-                                </Dialog>
+                                <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
+
                             </div>
                         ))
                     ) : (
@@ -125,15 +124,9 @@ const Page = ({ params }) => {
                                         <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>
                                     </div>
 
-                                    <Dialog>
-                                        <DialogTrigger>
-                                            <button className=''>View More <FaAnglesRight className='inline ' /></button>
-                                        </DialogTrigger>
-                                        <DialogContent>
-                                            <ProductItem product={product} />
-                                        </DialogContent>
-                                    </Dialog>
-                                    
+                                    <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
+
+
                                 </div>
                             ))
                         ) : (

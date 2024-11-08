@@ -13,8 +13,9 @@ import { CiMail } from "react-icons/ci";
 const Footer = () => {
     return (
         <footer className=' bg-neutral-950 text-white'>
-            <div className="flex gap-10 mx-32 py-10">
-                <div className=" w-1/3">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-10 mx-6 md:mx-32 py-6 md:py-10">
+
+                <div className="">
                     <div className="w-max rounded-full bg-[#c19f5f] p-2">
                         <Image src="/logo.png" alt="logo" width={100} height={100} />
                     </div>
@@ -34,8 +35,9 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
-                <div className=" w-1/3">
-                    <h2 className='text-3xl text-[#c19f5f] cormorant '>Explore</h2>
+
+                <div className=" ">
+                    <h2 className='text-2xl md:text-3xl text-[#c19f5f] cormorant '>Explore</h2>
                     <div className={`${Styles.shortline} mt-2 w-1/4`}></div>
 
                     <div className="links flex flex-col gap-4 mt-10">
@@ -63,8 +65,9 @@ const Footer = () => {
                     </div>
 
                 </div>
-                <div className=" w-1/3">
-                    <h2 className='text-3xl text-[#c19f5f] cormorant '>Links</h2>
+
+                <div className=" ">
+                    <h2 className='text-2xl md:text-3xl text-[#c19f5f] cormorant '>Links</h2>
                     <div className={`${Styles.shortline} mt-2 w-1/4`}></div>
 
                     <div className="links">
@@ -78,7 +81,7 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className="mx-32">
+            <div className="mx-6 md:mx-32">
                 <div className={`${Styles.shortline} mt-2 `}></div>
                 <div className="flex justify-center items-center ">
                     <h2 className='my-10' > Copyright © 2024 All Rights Reserved</h2>
