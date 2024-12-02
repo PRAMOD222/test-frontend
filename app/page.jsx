@@ -351,20 +351,20 @@ const Page = () => {
                         <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
                         <div className="">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>30</h2>
+                            <h3 className='cormorant text-4xl '>Products</h3>
                         </div>
                         <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
                         <div className="">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>07</h2>
+                            <h3 className='cormorant text-4xl '>Years of Experience</h3>
                         </div>
                         <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
                         <div className="">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>30</h2>
+                            <h3 className='cormorant text-4xl '>Team of Chefs</h3>
                         </div>
                     </div>
 
