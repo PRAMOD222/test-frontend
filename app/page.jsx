@@ -375,18 +375,18 @@ const Page = () => {
                         </div>
 
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>20</h2>
+                            <h3 className='cormorant text-4xl '>Products</h3>
                         </div>
 
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>07</h2>
+                            <h3 className='cormorant text-4xl '>Years of Experience</h3>
                         </div>
 
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
+                            <h2 className='cormorant text-6xl text-[#c19f5f]'>30</h2>
+                            <h3 className='cormorant text-4xl '>Team of Chefs</h3>
                         </div>
                     </div>
 
