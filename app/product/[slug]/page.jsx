@@ -25,6 +25,8 @@ const Page = ({ params }) => {
     };
 
     const addToCart = async () => {
+        console.log("Product ID:", product._id);
+
         try {
             const token = localStorage.getItem('token'); // Retrieve the token from localStorage or wherever you store it
 
@@ -95,12 +97,12 @@ const Page = ({ params }) => {
                                     <span className="title-font font-medium text-xl text-gray-600 line-through">
                                         ₹ {product.price}
                                     </span>
-                                    <span className="title-font font-medium text-xl text-green-500">
+                                    {product.discount > 0 && <span className="title-font font-medium text-xl text-green-500">
                                         {product.discount}% off
-                                    </span>
-                                    <span className="title-font font-medium text-3xl text-[#c19f5f]">
+                                    </span>}
+                                    {product.discountedPrice > 0 && <span className="title-font font-medium text-3xl text-[#c19f5f]">
                                         ₹ {product.discountedPrice}
-                                    </span>
+                                    </span>}
                                 </div>
 
                                 <div className="flex gap-4">

@@ -41,100 +41,128 @@ const Page = ({ params }) => {
 
     return (
         <div className='text-white bg-black border border-gray-50/0 min-h-screen'>
-            <div className="mx-32">
+            <div className="mx-32 sticky top-0 z-50">
                 <Navbar />
             </div>
-            <div className="sticky top-0 bg-[#100f10]">
+            <div className="sticky top-0 bg-[#100f10] z-50">
                 <MobileNav />
             </div>
 
-            {/* Display Products for the selected category (slug) */}
-            <section className='mx-6 md:mx-32'>
-                <h2 className="text-2xl font-bold mt-4 mb-2">
-                    {params.slug.charAt(0).toUpperCase() + params.slug.slice(1)}
-                </h2>
-                <div className="main-products grid md:grid-cols-4 grid-cols-1 gap-8">
-                    {filteredCategory.length > 0 ? (
-                        filteredCategory.map((product) => (
-                            <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group hover:scale-105 transition-all duration-300">
-                                <div className="rounded-md overflow-hidden w-full aspect-square">
-                                    <Image
-                                        className="object-cover w-full "
-                                        src={`${baseApi}/${product.image[0]}`}
-                                        alt={product.name}
-                                        width={200}
-                                        height={200}
-                                    />
-                                </div>
+            <div className="flex flex-col md:flex-row mx-6 md:mx-32 md:gap-10 relative">
 
-                                <div className="border-b border-[#c19f5f]/50 my-2  "></div>
-
-                                <h2 className='text-2xl text-[#c19f5f] uppercase '>{product.name}</h2>
-                                <p className='text-sm text-gray-400'>
-                                    {product.description.length > 40
-                                        ? `${product.description.slice(0, 40)}...`
-                                        : product.description}
-                                </p>
-                                <div className='flex gap-2 items-center'>
-                                    <p className='line-through text-gray-400'>Price: ₹{product.price}</p>
-                                    <p className='text-green-500'>{product.discount} % off</p>
-                                    <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>
-                                </div>
-                                <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
-
-                            </div>
-                        ))
-                    ) : (
-                        <p>No products found for this category.</p>
-                    )}
+                <div className="w-64 sticky top-0 hidden md:block">
+                    <h2 className="text-2xl font-bold my-4">Categories</h2>
+                    <ul className='space-y-4'>
+                        {categories.map((category) => (
+                            <li key={category} className="text-xl text-gray-500 hover:text-[#c19f5f] transition-all duration-300">
+                                <Link href={`/products/${category}`}>{category.charAt(0).toUpperCase() + category.slice(1)}</Link>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-            </section>
 
-            {/* Loop through the remaining categories and display them */}
-            {otherCategories.map((category) => (
-                <section key={category} className='mx-32'>
-                    <h2 className="text-2xl font-bold mt-8 mb-4">
-                        {category.charAt(0).toUpperCase() + category.slice(1)}
-                    </h2>
-                    <div className="main-products grid grid-cols-4 gap-4">
-                        {products[category].length > 0 ? (
-                            products[category].map((product) => (
-                                <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group hover:scale-105 transition-all duration-300">
-                                    <div className="rounded-md overflow-hidden w-full aspect-square">
-                                        <Image
-                                            className="object-cover w-full "
-                                            src={`${baseApi}/${product.image[0]}`}
-                                            alt={product.name}
-                                            width={200}
-                                            height={200}
-                                        />
+                <div className="md:w-64 sticky top-0 md:hidden block">
+                    {/* <h2 className="text-2xl font-bold my-4">Categories</h2> */}
+                    <ul className='flex my-4 gap-2 flex-wrap'>
+                        {categories.map((category) => (
+                            <li key={category} className="text-xl text-gray-500 hover:text-[#c19f5f] transition-all duration-300">
+                                <Link href={`/products/${category}`}>{category.charAt(0).toUpperCase() + category.slice(1)}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div>
+                    {/* Display Products for the selected category (slug) */}
+                    <section className=''>
+                        <h2 className="text-2xl font-bold  md:mt-4 mb-2">
+                            {params.slug.charAt(0).toUpperCase() + params.slug.slice(1)}
+                        </h2>
+                        <div className="main-products grid md:grid-cols-4 grid-cols-1 gap-8">
+                            {filteredCategory.length > 0 ? (
+                                filteredCategory.map((product) => (
+                                    <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group hover:scale-105 transition-all duration-300">
+                                        <div className="rounded-md overflow-hidden w-full aspect-square">
+                                            <Image
+                                                className="object-cover w-full brightness-50 group-hover:brightness-100 transition-all duration-300"
+                                                src={`${baseApi}/${product.image[0]}`}
+                                                alt={product.name}
+                                                width={200}
+                                                height={200}
+                                            />
+                                        </div>
+
+                                        <div className="border-b border-[#c19f5f]/50 my-2  "></div>
+
+                                        <h2 className='text-2xl text-[#c19f5f] uppercase '>{product.name}</h2>
+                                        <p className='text-sm text-gray-400'>
+                                            {product.description.length > 40
+                                                ? `${product.description.slice(0, 40)}...`
+                                                : product.description}
+                                        </p>
+                                        <div className='flex gap-2 items-center'>
+                                            <p className={product.discount > 0 ? "line-through text-gray-400" : 'text-[#c19f5f] text-xl'}>Price: ₹{product.price}</p>
+                                            {product.discount > 0 && <p className='text-green-500'>{product.discount} % off</p>}
+                                            {product.discount > 0 && <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>}
+                                        </div>
+                                        <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
+
                                     </div>
+                                ))
+                            ) : (
+                                <p>No products found for this category.</p>
+                            )}
+                        </div>
+                    </section>
 
-                                    <div className="border-b border-[#c19f5f]/50 my-2  "></div>
+                    {/* Loop through the remaining categories and display them */}
+                    {otherCategories.map((category) => (
+                        <section key={category} className=''>
+                            <h2 className="text-2xl font-bold mt-8 mb-4">
+                                {category.charAt(0).toUpperCase() + category.slice(1)}
+                            </h2>
+                            <div className="main-products grid md:grid-cols-4 grid-cols-1 gap-8">
+                                {products[category].length > 0 ? (
+                                    products[category].map((product) => (
+                                        <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group hover:scale-105 transition-all duration-300">
+                                            <div className="rounded-md overflow-hidden w-full aspect-square">
+                                                <Image
+                                                    className="object-cover w-full brightness-50 group-hover:brightness-100 transition-all duration-300"
+                                                    src={`${baseApi}/${product.image[0]}`}
+                                                    alt={product.name}
+                                                    width={200}
+                                                    height={200}
+                                                />
+                                            </div>
 
-                                    <h2 className='text-2xl text-[#c19f5f] uppercase '>{product.name}</h2>
-                                    <p className='text-sm text-gray-400'>
-                                        {product.description.length > 40
-                                            ? `${product.description.slice(0, 40)}...`
-                                            : product.description}
-                                    </p>
-                                    <div className='flex gap-2 items-center'>
-                                        <p className='line-through text-gray-400'>Price: ₹{product.price}</p>
-                                        <p className='text-green-500'>{product.discount} % off</p>
-                                        <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>
-                                    </div>
+                                            <div className="border-b border-[#c19f5f]/50 my-2  "></div>
 
-                                    <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
+                                            <h2 className='text-2xl text-[#c19f5f] uppercase '>{product.name}</h2>
+                                            <p className='text-sm text-gray-400'>
+                                                {product.description.length > 40
+                                                    ? `${product.description.slice(0, 40)}...`
+                                                    : product.description}
+                                            </p>
+                                            <div className='flex gap-2 items-center'>
+                                                <p className={product.discount > 0 ? "line-through text-gray-400" : 'text-[#c19f5f] text-xl'}>Price: ₹{product.price}</p>
+                                                {product.discount > 0 && <p className='text-green-500'>{product.discount} % off</p>}
+                                                {product.discount > 0 && <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>}
+                                            </div>
+
+                                            <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
 
 
-                                </div>
-                            ))
-                        ) : (
-                            <p>No products available in this category.</p>
-                        )}
-                    </div>
-                </section>
-            ))}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p>No products available in this category.</p>
+                                )}
+                            </div>
+                        </section>
+                    ))}
+                </div>
+            </div>
+
 
             {/* <section className='mx-32 my-20'>
                 <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false}

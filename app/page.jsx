@@ -85,19 +85,19 @@ const Page = () => {
                 return (
                     <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
 
-                        {products.barcakes && products.barcakes.map((product) => (
+                        {products.barcakes && products.barcakes.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
                                 <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
-                                        <h2>350 /-</h2>
+                                        <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
                                         <p className='text-sm text-[#c19f5f]'>
-                                            {product.description}
+                                            {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
                                         </p>
-                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Shop Now +</Link>
+                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Add to Cart</Link>
                                     </div>
                                 </div>
                             </div>
@@ -106,20 +106,20 @@ const Page = () => {
                 );
             case 'Toasts':
                 return (
-                    <div className="products grid grid-cols-2 gap-10">
-                        {products.toasts && products.toasts.map((product) => (
+                    <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
+                        {products.toasts && products.toasts.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
                                 <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
-                                        <h2>350 /-</h2>
+                                        <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
                                         <p className='text-sm text-[#c19f5f]'>
-                                            {product.description}
+                                            {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
                                         </p>
-                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Shop Now +</Link>
+                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Add to Cart</Link>
                                     </div>
                                 </div>
                             </div>
@@ -128,20 +128,20 @@ const Page = () => {
                 );
             case 'Cheese Straw':
                 return (
-                    <div className="products grid grid-cols-2 gap-10">
-                        {products.cheesestraws && products.cheesestraws.map((product) => (
+                    <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
+                        {products.cheesestraws && products.cheesestraws.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
                                 <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
-                                        <h2>350 /-</h2>
+                                        <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
                                         <p className='text-sm text-[#c19f5f]'>
-                                            {product.description}
+                                            {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
                                         </p>
-                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Shop Now +</Link>
+                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Add to Cart</Link>
                                     </div>
                                 </div>
                             </div>
@@ -150,20 +150,20 @@ const Page = () => {
                 );
             case 'Lavash':
                 return (
-                    <div className="products grid grid-cols-2 gap-10">
-                        {products.lavash && products.lavash.map((product) => (
+                    <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
+                        {products.lavash && products.lavash.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
                                 <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
                                     <div className='cormorant text-3xl flex justify-between'>
                                         <h2>{product.name} ......</h2>
-                                        <h2>350 /-</h2>
+                                        <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
                                         <p className='text-sm text-[#c19f5f]'>
-                                            {product.description}
+                                            {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
                                         </p>
-                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Shop Now +</Link>
+                                        <Link href={`/product/${product._id}`} className='whitespace-nowrap underline'>Add to Cart</Link>
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@ const Page = () => {
                 </div>
             </motion.nav>
 
-            <div className="">
+            <div className="sticky top-0 bg-[#100f10] z-50">
                 <MobileNav />
             </div>
 
@@ -202,9 +202,10 @@ const Page = () => {
                             <li> <Link href={'/products/toasts'} className=''>Toast </Link></li>
                             <li> <Link href={'/products/lavash'} className=''>Lavash </Link></li>
                             <li> <Link href={'/products/cheesestraws'} className=''>Cheese Straws </Link></li>
+                            <li> <Link href={'/products/breadsticks'} className=''>Breadsticks </Link></li>
                             <li> <Link href={'/about'} className=''>About + </Link></li>
                             <li> <Link href={'/'} className=''>Enquire Now </Link></li>
-                            <li> <Link href={'/contact'} className=''>Contact </Link></li>
+                            {/* <li> <Link href={'/contact'} className=''>Contact </Link></li> */}
                         </ul>
                         {/* <Image className='' src="/line.png" alt="line" width={1000} height={10} /> */}
 
@@ -285,7 +286,7 @@ const Page = () => {
                             <div className={`${Styles.product1} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
-                                        <h2 className='cormorant text-4xl font-semibold mb-4'>Bar Cakes</h2>
+                                        <h2 className='cormorant text-4xl font-semibold mb-4 text-center'>Bar Cakes</h2>
                                         <Link href={'/products/barcakes'} className='text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500'>Shop Now</Link>
                                     </div>
                                 </div>
@@ -296,7 +297,7 @@ const Page = () => {
                             <div className={`${Styles.product2} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
-                                        <h2 className='cormorant text-4xl font-semibold mb-4'>Toasts</h2>
+                                        <h2 className='cormorant text-4xl font-semibold mb-4 text-center'>Toasts</h2>
                                         <Link href={'/products/toasts'} className='text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500'>Shop Now</Link>
                                     </div>
                                 </div>
@@ -307,7 +308,7 @@ const Page = () => {
                             <div className={`${Styles.product3} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
-                                        <h2 className='cormorant text-4xl font-semibold mb-4'>Lavash</h2>
+                                        <h2 className='cormorant text-4xl font-semibold mb-4 text-center'>Lavash</h2>
                                         <Link href={'/products/lavash'} className='text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500'>Shop Now</Link>
                                     </div>
                                 </div>
@@ -318,7 +319,7 @@ const Page = () => {
                             <div className={`${Styles.product4} aspect-[3/4] p-3  scale-125 hover:scale-100 transition-all duration-500 `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center scale-75 hover:scale-100 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
-                                        <h2 className='cormorant text-4xl font-semibold mb-4'>Cheese Staws</h2>
+                                        <h2 className='cormorant text-4xl font-semibold mb-4 text-center'>Cheese Staws</h2>
                                         <Link href={'/products/cheesestraws'} className='text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500'>Shop Now</Link>
                                     </div>
                                 </div>
@@ -370,23 +371,23 @@ const Page = () => {
 
                     <div className='md:hidden grid grid-cols-2 gap-4'>
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
+                            <h2 className='cormorant text-3xl text-[#c19f5f]'>230</h2>
+                            <h3 className='cormorant text-xl '>Stores</h3>
                         </div>
 
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>20</h2>
-                            <h3 className='cormorant text-4xl '>Products</h3>
+                            <h2 className='cormorant text-3xl text-[#c19f5f]'>20</h2>
+                            <h3 className='cormorant text-xl '>Products</h3>
                         </div>
 
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>07</h2>
-                            <h3 className='cormorant text-4xl '>Years of Experience</h3>
+                            <h2 className='cormorant text-3xl text-[#c19f5f]'>07</h2>
+                            <h3 className='cormorant text-xl '>Years of Experience</h3>
                         </div>
 
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>30</h2>
-                            <h3 className='cormorant text-4xl '>Team of Chefs</h3>
+                            <h2 className='cormorant text-3xl text-[#c19f5f]'>30</h2>
+                            <h3 className='cormorant text-xl '>Team of Chefs</h3>
                         </div>
                     </div>
 
