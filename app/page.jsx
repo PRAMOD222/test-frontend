@@ -87,10 +87,10 @@ const Page = () => {
 
                         {products.barcakes && products.barcakes.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
-                                    <div className='cormorant text-3xl flex justify-between'>
-                                        <h2>{product.name} ......</h2>
+                                    <div className='cormorant text-xl md:text-3xl flex justify-between'>
+                                        <h2>{product.name} <span className='hidden md:inline'>......</span></h2>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
@@ -109,10 +109,10 @@ const Page = () => {
                     <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
                         {products.toasts && products.toasts.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
-                                    <div className='cormorant text-3xl flex justify-between'>
-                                        <h2>{product.name} ......</h2>
+                                    <div className='cormorant text-xl md:text-3xl flex justify-between'>
+                                        <h2>{product.name} <span className='hidden md:inline'>......</span></h2>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
@@ -131,10 +131,10 @@ const Page = () => {
                     <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
                         {products.cheesestraws && products.cheesestraws.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
-                                    <div className='cormorant text-3xl flex justify-between'>
-                                        <h2>{product.name} ......</h2>
+                                    <div className='cormorant text-xl md:text-3xl flex justify-between'>
+                                        <h2>{product.name} <span className='hidden md:inline'>......</span></h2>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
@@ -153,10 +153,10 @@ const Page = () => {
                     <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
                         {products.lavash && products.lavash.slice(0, 6).map((product) => (
                             <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
                                 <div>
-                                    <div className='cormorant text-3xl flex justify-between'>
-                                        <h2>{product.name} ......</h2>
+                                    <div className='cormorant text-xl md:text-3xl flex justify-between'>
+                                        <h2>{product.name} <span className='hidden md:inline'>......</span></h2>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
@@ -237,7 +237,7 @@ const Page = () => {
                     </div>
                 </div> */}
 
-                <div className="relative h-[100vh] md:h-[130vh] z-10">
+                <div className="relative h-[130vh] z-10">
                     {/* Arrows */}
                     <button onClick={prevSlide} className="absolute left-4 md:left-32 top-[20%] md:top-1/2 text-6xl z-20">
                         &larr;

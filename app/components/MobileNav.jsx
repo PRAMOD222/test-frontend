@@ -28,7 +28,7 @@ const MobileNav = () => {
                 >
                     <FaTimes className="text-3xl absolute top-6 right-6 cursor-pointer " onClick={toggleNav} />
                     <ul className="space-y-6  bg-gray-800 ">
-                        <li className="my-4"> <Link href={'/'}><Image className='w-20' width={200} height={200} src="/logo.png" alt="logo" /></Link></li>
+                    <li className='w-max rounded-full bg-[#c19f5f] p-2'> <Link href={'/'}><Image className='w-20' width={200} height={200} src="/logo.png" alt="logo" /></Link></li>
                         <li> <Link href={'/products/barcakes'}> Bar Cakes</Link></li>
                         <li> <Link href={'/products/toasts'}> Toast</Link></li>
                         <li> <Link href={'/products/lavash'}> Lavash</Link></li>

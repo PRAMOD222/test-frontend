@@ -1,5 +1,6 @@
 "use client";
-import Navbar from "@/app/components/Navbar";
+import Navbar from '@/app/components/Navbar';
+import MobileNav from '@/app/components/MobileNav';
 import Footer from "@/app/components/Footer";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -46,7 +47,7 @@ const Page = ({ params }) => {
             if (response.ok) {
                 setCartStatus('Product added to cart!');
                 console.log("Product added to cart:", data);
-                
+
             } else {
                 setCartStatus('Failed to add product to cart.');
             }
@@ -67,15 +68,18 @@ const Page = ({ params }) => {
     return (
         <div className="bg-black">
 
-            <div className="mx-32 sticky top-0 left-0">
+            <div className="mx-32 sticky top-0 z-50">
                 <Navbar />
+            </div>
+            <div className="sticky top-0 bg-[#100f10] z-50">
+                <MobileNav />
             </div>
 
             <section className="text-gray-600 body-font overflow-hidden">
-                <div className="mx-32 py-24">
+                <div className="mx-6 md:mx-32 py-24">
                     {product ? (
-                        <div key={product.id} className="mx-auto flex gap-4">
-                            <div className="aspect-square w-1/2 ">
+                        <div key={product.id} className="mx-auto flex flex-col md:flex-row gap-4">
+                            <div className="aspect-square w-full md:w-1/2 ">
                                 <Image
                                     width={2000}
                                     height={2000}
@@ -84,37 +88,40 @@ const Page = ({ params }) => {
                                     src={`${baseApi}/${mainImage}`} // Display the main image
                                 />
                             </div>
-                            <div className="lg:w-1/2 flex flex-col justify-end space-y-8">
-                                <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                                    {product.category}
-                                </h2>
-                                <h1 className="text-[#c19f5f] text-3xl title-font font-medium">
-                                    {product.name}
-                                </h1>
-                                <p className="leading-relaxed text-gray-500">{product.description}</p>
+                            <div className="lg:w-1/2 flex md:flex-col flex-col-reverse justify-end space-y-8">
+                                <div>
+                                    <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                                        {product.category}
+                                    </h2>
+                                    <h1 className="text-[#c19f5f] text-3xl title-font font-medium">
+                                        {product.name}
+                                    </h1>
+                                    <p className="leading-relaxed text-gray-500">{product.description}</p>
+                                    <p className="text-xl text-gray-400">{product.addInfo}</p>
 
-                                <div className="flex gap-4">
-                                    <span className="title-font font-medium text-xl text-gray-600 line-through">
-                                        ₹ {product.price}
-                                    </span>
-                                    {product.discount > 0 && <span className="title-font font-medium text-xl text-green-500">
-                                        {product.discount}% off
-                                    </span>}
-                                    {product.discountedPrice > 0 && <span className="title-font font-medium text-3xl text-[#c19f5f]">
-                                        ₹ {product.discountedPrice}
-                                    </span>}
-                                </div>
+                                    <div className="flex gap-4 my-4">
+                                        <span className={`${product.discount > 0 ? 'text-gray-600 line-through text-xl' : 'text-3xl text-[#c19f5f]'} title-font font-medium`}>
+                                            ₹ {product.price}
+                                        </span>
+                                        {product.discount > 0 && <span className="title-font font-medium text-xl text-green-500">
+                                            {product.discount}% off
+                                        </span>}
+                                        {product.discount > 0 && <span className="title-font font-medium text-3xl text-[#c19f5f]">
+                                            ₹ {product.discountedPrice}
+                                        </span>}
+                                    </div>
 
-                                <div className="flex gap-4">
-                                    <Link href={`/checkout/${product._id}`} className="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
-                                        Buy Now
-                                    </Link>
-                                    <button
-                                        className="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded"
-                                        onClick={() => addToCart(product._id)}  // Pass product ID here
-                                    >
-                                        Add to Cart
-                                    </button>
+                                    <div className="flex gap-4">
+                                        <Link href={`/checkout/${product._id}`} className="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded">
+                                            Buy Now
+                                        </Link>
+                                        <button
+                                            className="flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded"
+                                            onClick={() => addToCart(product._id)}  // Pass product ID here
+                                        >
+                                            Add to Cart
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <div className="flex mt-10 gap-2">
