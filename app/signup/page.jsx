@@ -2,6 +2,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Navbar from '@/app/components/Navbar';
+import MobileNav from '@/app/components/MobileNav';
+import Footer from "@/app/components/Footer";
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
 
@@ -32,7 +35,7 @@ const Signup = () => {
                 const data = await response.json();
                 console.log(data);
                 router.push("/login");
-                
+
             } else {
                 console.error("Signup failed");
             }
@@ -42,54 +45,63 @@ const Signup = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center">
-            <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
-                <h1 className="text-3xl font-bold mb-6 text-center">Signup</h1>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2">Username</label>
-                        <input
-                            type="text"
-                            name="username"
-                            value={formData.username}
-                            onChange={handleChange}
-                            className="w-full p-2 border rounded-lg"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2">Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="w-full p-2 border rounded-lg"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium mb-2">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            className="w-full p-2 border rounded-lg"
-                            required
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition duration-300"
-                    >
-                        Signup
-                    </button>
-                </form>
-                <p className="mt-4 text-center">
-                    Already have an account? <Link href="/login" className="text-blue-600">Login</Link>
-                </p>
+        <div className="bg-black">
+            <div className="px-32 sticky top-0 z-50  bg-black">
+                <Navbar />
             </div>
+            <div className="sticky top-0 bg-[#100f10] z-50">
+                <MobileNav />
+            </div>
+            <div className="min-h-screen bg-black flex flex-col justify-center items-center">
+                <div className="w-full text-white max-w-md bg-neutral-900 shadow-md rounded-lg p-8">
+                    <h1 className="text-3xl font-bold mb-6 text-center text-[#c19f5f]">Signup</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-2 ">Username</label>
+                            <input
+                                type="text"
+                                name="username"
+                                value={formData.username}
+                                onChange={handleChange}
+                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-2">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium mb-2">Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full bg-[#c19f5f] text-white p-2 rounded-lg hover:bg-[#c19f5f]/80 transition duration-300"
+                        >
+                            Signup
+                        </button>
+                    </form>
+                    <p className="mt-4 text-center">
+                        Already have an account? <Link href="/login" className="text-[#c19f5f]">Login</Link>
+                    </p>
+                </div>
+            </div>
+            <Footer />
         </div>
     );
 };
