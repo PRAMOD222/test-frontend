@@ -6,7 +6,7 @@ import MobileNav from '@/app/components/MobileNav';
 import Image from 'next/image';
 import { FaAnglesRight } from "react-icons/fa6";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
+import AddToCart from '@/app/components/AddToCart';
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
 
@@ -48,9 +48,9 @@ const Page = ({ params }) => {
                 <MobileNav />
             </div>
 
-            <div className="flex flex-col md:flex-row mx-6 md:mx-32 md:gap-10 relative">
+            <div className="flex flex-col md:flex-row mx-6 md:mx-32 md:gap-10 ">
 
-                <div className="w-64 sticky top-0 hidden md:block">
+                <div className="w-64 sticky top-0 left-0 hidden md:block ">
                     <h2 className="text-2xl font-bold my-4">Categories</h2>
                     <ul className='space-y-4'>
                         {categories.map((category) => (
@@ -61,7 +61,7 @@ const Page = ({ params }) => {
                     </ul>
                 </div>
 
-                <div className="md:w-64 sticky top-0 md:hidden block">
+                <div className="md:w-64 sticky top-0 md:hidden block ">
                     {/* <h2 className="text-2xl font-bold my-4">Categories</h2> */}
                     <ul className='flex my-4 gap-2 flex-wrap'>
                         {categories.map((category) => (
@@ -94,7 +94,7 @@ const Page = ({ params }) => {
 
                                         <div className="border-b border-[#c19f5f]/50 my-2  "></div>
 
-                                        <h2 className='text-2xl text-[#c19f5f] uppercase '>{product.name}</h2>
+                                        <h2 className='text-[#c19f5f] uppercase whitespace-nowrap overflow-hidden text-ellipsis'>{product.name}</h2>
                                         <p className='text-sm text-gray-400'>
                                             {product.description.length > 40
                                                 ? `${product.description.slice(0, 40)}...`
@@ -105,7 +105,11 @@ const Page = ({ params }) => {
                                             {product.discount > 0 && <p className='text-green-500'>{product.discount} % off</p>}
                                             {product.discount > 0 && <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>}
                                         </div>
-                                        <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
+
+                                        {/* <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link> */}
+                                        <h3 className='bg-[#c19f5f] text-white py-2 px-4 rounded-md my-2 mb-auto'>
+                                            <AddToCart product={product} />
+                                        </h3>
 
                                     </div>
                                 ))
@@ -137,7 +141,7 @@ const Page = ({ params }) => {
 
                                             <div className="border-b border-[#c19f5f]/50 my-2  "></div>
 
-                                            <h2 className='text-2xl text-[#c19f5f] uppercase '>{product.name}</h2>
+                                            <h2 className='text-[#c19f5f] uppercase whitespace-nowrap overflow-hidden text-ellipsis'>{product.name}</h2>
                                             <p className='text-sm text-gray-400'>
                                                 {product.description.length > 40
                                                     ? `${product.description.slice(0, 40)}...`
@@ -149,8 +153,10 @@ const Page = ({ params }) => {
                                                 {product.discount > 0 && <p className='text-[#c19f5f] text-xl'> Price: ₹{product.discountedPrice}</p>}
                                             </div>
 
-                                            <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link>
-
+                                            {/* <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link> */}
+                                            <h3 className='bg-[#c19f5f] text-white py-2 px-4 rounded-md my-2 mb-auto'>
+                                                <AddToCart product={product} />
+                                            </h3>
 
                                         </div>
                                     ))
@@ -162,45 +168,6 @@ const Page = ({ params }) => {
                     ))}
                 </div>
             </div>
-
-
-            {/* <section className='mx-32 my-20'>
-                <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false} showStatus={false}
-                    renderArrowPrev={(clickHandler, hasPrev) => (
-                        <button
-                            type="button"
-                            onClick={clickHandler}
-                            className="absolute left-0 z-10 p-2  text-white"
-                            style={{ top: '50%', transform: 'translateY(-50%)' }}
-                        >
-                            <FaArrowCircleLeft className='text-3xl' />
-                        </button>
-                    )}
-                    renderArrowNext={(clickHandler, hasNext) => (
-                        <button
-                            type="button"
-                            onClick={clickHandler}
-                            className="absolute right-0 z-10 p-2  text-white"
-                            style={{ top: '50%', transform: 'translateY(-50%)' }}
-                        >
-                            <FaArrowCircleRight className='text-3xl' />
-                        </button>
-                    )}
-                >
-                    <div className='h-[80vh]'>
-                        <img src="/1.png" alt="Slide 1" />
-                    </div>
-                    <div className='h-[80vh]'>
-                        <img src="/2.png" alt="Slide 2" />
-                    </div>
-                    <div className='h-[80vh]'>
-                        <img src="/3.png" alt="Slide 3" />
-                    </div>
-                </Carousel>
-            </section> */}
-
-
-
         </div>
     );
 };

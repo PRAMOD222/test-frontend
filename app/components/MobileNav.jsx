@@ -14,7 +14,7 @@ const MobileNav = () => {
     return (
         <div className="text-white w-full block md:hidden ">
             <div className={` p-4 justify-between items-center z-30 w-full ${isOpen ? "hidden" : "flex"}`}>
-                <Link className="w-max rounded-full bg-[#c19f5f] p-2" href={'/'}><Image className='w-20' width={200} height={200} src="/logo.png" alt="logo" /></Link>
+                <Link className="w-max rounded-full bg-[#c19f5f] p-2" href={'/'}><Image className='w-14' width={200} height={200} src="/logo.png" alt="logo" /></Link>
                 <FaHamburger className="text-3xl cursor-pointer" onClick={toggleNav} />
             </div>
 
@@ -28,7 +28,7 @@ const MobileNav = () => {
                 >
                     <FaTimes className="text-3xl absolute top-6 right-6 cursor-pointer " onClick={toggleNav} />
                     <ul className="space-y-6  bg-gray-800 ">
-                    <li className='w-max rounded-full bg-[#c19f5f] p-2'> <Link href={'/'}><Image className='w-20' width={200} height={200} src="/logo.png" alt="logo" /></Link></li>
+                    <li className='w-max rounded-full bg-[#c19f5f] p-2'> <Link href={'/'}><Image className='w-16' width={200} height={200} src="/logo.png" alt="logo" /></Link></li>
                         <li> <Link href={'/products/barcakes'}> Bar Cakes</Link></li>
                         <li> <Link href={'/products/toasts'}> Toast</Link></li>
                         <li> <Link href={'/products/lavash'}> Lavash</Link></li>

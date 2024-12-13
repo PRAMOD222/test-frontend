@@ -16,17 +16,7 @@ const Page = ({ params }) => {
     const [quantity, setQuantity] = useState(1);
 
 
-    const fetchProduct = async () => {
-        try {
-            const response = await fetch(`${baseApi}/api/products/single/${params.slug}`);
-            const data = await response.json();
-            setProduct(data);
-            // setMainImage(data.image[0]); // Set the first image as the main image initially
-            console.log("Product fetched:", data);
-        } catch (error) {
-            console.error("Error fetching product:", error);
-        }
-    };
+    
 
     const incrementQuantity = () => setQuantity(quantity + 1);
     const decrementQuantity = () => {
@@ -34,8 +24,21 @@ const Page = ({ params }) => {
     };
 
     useEffect(() => {
+        
+        const fetchProduct = async () => {
+            try {
+                const response = await fetch(`${baseApi}/api/products/single/${params.slug}`);
+                const data = await response.json();
+                setProduct(data);
+                // setMainImage(data.image[0]); // Set the first image as the main image initially
+                console.log("Product fetched:", data);
+            } catch (error) {
+                console.error("Error fetching product:", error);
+            }
+        };
+
         fetchProduct();
-    }, []);
+    }, [params.slug]);
 
 
     return (

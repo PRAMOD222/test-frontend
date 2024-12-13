@@ -31,19 +31,28 @@
 }
 
 .product1{
-    background-image: url('/2.png');  
+    background-image: url('/barcakes.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .product2{
-    background-image: url('/3.png');
+    background-image: url('/toast.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
+
 .product3{
-    background-image: url('/1.png');
+    background-image: url('/lavash.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .product4{
-    background-image: url('/4.png');
+    background-image: url('/cheesestaws.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .section2Bg{

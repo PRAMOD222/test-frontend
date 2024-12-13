@@ -1,5 +1,9 @@
 import localFont from "next/font/local";
+import ReduxProvider from "@/store/reduxProvider";
+import Cart from "./components/Cart";
 import "./globals.css";
+
+
 
 const mulish = localFont({
   src: "./fonts/Mulish.woff",
@@ -18,12 +22,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-      <html lang="en">
+    <html lang="en">
+      <ReduxProvider>
         <body
           className={`${mulish.variable} ${cormorant.variable} antialiased`}
         >
           {children}
+          <div>
+            <Cart />
+          </div>
         </body>
-      </html>
+      </ReduxProvider>
+    </html>
   );
 }

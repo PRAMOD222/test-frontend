@@ -4,13 +4,12 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaUserAlt } from "react-icons/fa";
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSelector, useDispatch } from 'react-redux';
 
 
+const Navbar = () => {
 
-const navbar = () => {
-
-
-
+    const cartItems = useSelector((state) => state.cart.cartItems);
 
     return (
         <div>
@@ -22,11 +21,10 @@ const navbar = () => {
                     <li> <Link href={'/products/lavash'}> Lavash</Link></li>
                     <li> <Link href={'/products/cheesestraws'}> Cheese Straws</Link></li>
                     <li> <Link href={'/products/breadsticks'} className=''>Breadsticks </Link></li>
-
                     <li> <Link href={'/about'}>About + </Link></li>
                     <li>Enquire Now</li>
                     {/* <li> <Link href={'/contact'}> Contact</Link></li> */}
-                    <li className=''><Link href={'/cart'}><FaCartShopping /></Link></li>
+                    <li className='relative'><Link href={'/cart'}><FaCartShopping /> <span className='absolute -top-2 -right-2 bg-[#c19f5f] text-white rounded-full w-4 h-4 flex items-center justify-center text-xs '>{cartItems.length}</span></Link></li>
                     <li className=''><Link href={'/login'}><FaUserAlt /></Link></li>
                 </ul>
             </nav>
@@ -36,4 +34,4 @@ const navbar = () => {
     )
 }
 
-export default navbar
+export default Navbar

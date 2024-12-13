@@ -13,17 +13,7 @@ const Page = ({ params }) => {
     const [mainImage, setMainImage] = useState(""); // State to track the main image
     const [cartStatus, setCartStatus] = useState("");
 
-    const fetchProduct = async () => {
-        try {
-            const response = await fetch(`${baseApi}/api/products/single/${params.slug}`);
-            const data = await response.json();
-            setProduct(data);
-            setMainImage(data.image[0]); // Set the first image as the main image initially
-            console.log("Product fetched:", data);
-        } catch (error) {
-            console.error("Error fetching product:", error);
-        }
-    };
+    
 
     const addToCart = async () => {
         console.log("Product ID:", product._id);
@@ -58,8 +48,20 @@ const Page = ({ params }) => {
     };
 
     useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await fetch(`${baseApi}/api/products/single/${params.slug}`);
+                const data = await response.json();
+                setProduct(data);
+                setMainImage(data.image[0]); // Set the first image as the main image initially
+                console.log("Product fetched:", data);
+            } catch (error) {
+                console.error("Error fetching product:", error);
+            }
+        };
+
         fetchProduct();
-    }, []);
+    }, [params.slug]);
 
     const handleImageClick = (img) => {
         setMainImage(img);
@@ -131,13 +133,13 @@ const Page = ({ params }) => {
                                             className="w-1/5 cursor-pointer" // Add cursor pointer to indicate clickability
                                             onClick={() => handleImageClick(img)} // Handle image click
                                         >
-                                            <Image
+                                            {<Image
                                                 src={`${baseApi}/${img}`}
                                                 width={200}
                                                 height={200}
                                                 alt="ecommerce"
                                                 className="object-cover object-center rounded"
-                                            />
+                                            />}
                                         </div>
                                     ))}
                                 </div>

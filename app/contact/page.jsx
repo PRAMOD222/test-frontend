@@ -34,59 +34,59 @@ const Contact = () => {
 
                 <div className="hidden md:flex justify-between  my-10 md:my-20">
 
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex flex-col items-center text-center flex-1">
                         <SlLocationPin className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Location</h2>
-                        <h3 className=' text-gray-500'>29 Nicolas str, New York, 987597-50</h3>
+                        <h3 className=' text-gray-500'>Gala no 11,12,15, 1st floor 41 National House, Opposite Ansa-A Building, Near Kotak Mahindra Bank,  Saki Vihar Road, Chandivali Junction, Andheri East, Mumbai, Maharashtra -400072.</h3>
                     </div>
                     <div className="border border-dashed border-[#c19f5f] mx-4"></div>
 
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex flex-col items-center text-center flex-1">
                         <BiPhoneCall className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Phone</h2>
-                        <h3 className=' text-gray-500'>+91 12345 67890 <br /> +91 12345 67890</h3>
+                        <h3 className=' text-gray-500'>+91 81046 06275 <br /> </h3>
                     </div>
                     <div className="border border-dashed border-[#c19f5f] mx-4"></div>
 
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex flex-col items-center text-center flex-1">
                         <CiMail className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Email</h2>
-                        <h3 className=' text-gray-500'>YVqFP@example.com <br /> YVqFP@example.com</h3>
+                        <h3 className=' text-gray-500'>Paramount.patisserie@gmail.com <br /> </h3>
                     </div>
                     <div className="border border-dashed border-[#c19f5f] mx-4"></div>
 
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex flex-col items-center text-center flex-1">
                         <CiTimer className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Opening Hours</h2>
-                        <h3 className=' text-gray-500'>Monday to Saturday <br /> 9:00am to 6:00pm</h3>
+                        <h3 className=' text-gray-500'>Monday to Sunday <br /> 24 * 7</h3>
                     </div>
 
                 </div>
 
-                <div className="md:hidden grid grid-cols-2 gap-4  my-10 md:my-20">
+                <div className="md:hidden grid grid-cols-1 gap-4  my-10 md:my-20">
 
                     <div className="flex flex-col items-center text-center">
                         <SlLocationPin className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Location</h2>
-                        <h3 className=' text-gray-500'>29 Nicolas str, New York, 987597-50</h3>
+                        <h3 className=' text-gray-500'>Gala no 11,12,15, 1st floor 41 National House, Opposite Ansa-A Building, Near Kotak Mahindra Bank,  Saki Vihar Road, Chandivali Junction, Andheri East, Mumbai, Maharashtra -400072.</h3>
                     </div>
 
                     <div className="flex flex-col items-center text-center">
                         <BiPhoneCall className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Phone</h2>
-                        <h3 className=' text-gray-500'>+91 12345 67890 <br /> +91 12345 67890</h3>
+                        <h3 className=' text-gray-500'>+91 81046 06275 <br /> </h3>
                     </div>
 
                     <div className="flex flex-col items-center text-center">
                         <CiMail className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Email</h2>
-                        <h3 className=' text-gray-500'>YVqFP@example.com <br /> YVqFP@example.com</h3>
+                        <h3 className=' text-gray-500'>Paramount.patisserie@gmail.com <br /> </h3>
                     </div>
 
                     <div className="flex flex-col items-center text-center">
                         <CiTimer className='text-5xl text-[#c19f5f]' />
                         <h2 className='cormorant text-2xl my-2'>Opening Hours</h2>
-                        <h3 className=' text-gray-500'>Monday to Saturday <br /> 9:00am to 6:00pm</h3>
+                        <h3 className=' text-gray-500'>Monday to Sunday <br /> 24 * 7</h3>
                     </div>
 
                 </div>
@@ -94,7 +94,7 @@ const Contact = () => {
             </section>
 
             <section>
-                <iframe className="w-full h-[60vh] md:h-screen" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.5459973537986!2d74.24460617461261!3d16.6995872222559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc101b2dc174645%3A0xfe0736990c6fffce!2sTF%20STRATEGIES%20PVT.%20LTD.!5e0!3m2!1sen!2sin!4v1728028376073!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe className="w-full h-[60vh] md:h-screen" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3821.5459973537986!2d74.24460617461261!3d16.6995872222559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc101b2dc174645%3A0xfe0736990c6fffce!2sTF%20STRATEGIES%20PVT.%20LTD.!5e0!3m2!1sen!2sin!4v1728028376073!5m2!1sen!2sin" width="600" height="450" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
 
 
             </section>

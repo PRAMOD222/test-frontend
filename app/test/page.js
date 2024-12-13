@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import Footer from '../components/Footer';
+import Image from 'next/image';
 
 const UploadPage = () => {
   const [title, setTitle] = useState('');
@@ -106,7 +107,7 @@ const UploadPage = () => {
               <h2>{post.title}</h2>
               <p>{post.description}</p>
               <a target='_blank'>{`http://localhost:3001${post.image}`}</a>
-              <img src={`http://localhost:3001${post.image}`} alt={post.title}  />
+              <Image width={200} height={200} src={`http://localhost:3001${post.image}`} alt={post.title}  />
               {/* <p>Uploaded on: {new Date(post.created_at).toLocaleString()}</p> */}
             </li>
           ))}

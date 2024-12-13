@@ -3,17 +3,18 @@ import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { useState, useEffect } from 'react';
 import Image from "next/image";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table"
-import { FaCirclePlus } from "react-icons/fa6";
-import { FaMinusCircle } from "react-icons/fa";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table"
 import { MdDelete } from "react-icons/md";
-
+import { updatequantity, removeFromCart } from '@/store/cartSlice';
+import { useDispatch } from 'react-redux';
 
 
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
 
 const Cart = () => {
+    const dispatch = useDispatch();
+
 
     const [cart, setCart] = useState(null);
 
@@ -38,6 +39,7 @@ const Cart = () => {
     };
 
     const updateCartQuantity = async (productId, quantity) => {
+        dispatch(updatequantity({ productId, quantity }));
         try {
             const token = localStorage.getItem('token'); // Retrieve the token from localStorage or wherever you store it
             const response = await fetch(`${baseApi}/api/cart/update-quantity`, {
@@ -58,6 +60,7 @@ const Cart = () => {
     };
 
     const deleteFromCart = async (productId) => {
+        dispatch(removeFromCart(productId));
         try {
             const token = localStorage.getItem('token'); // Retrieve token
             const response = await fetch(`${baseApi}/api/cart/remove-from-cart`, {
