@@ -33,7 +33,6 @@ const HomeCarousel = () => {
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
-
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
     };
@@ -42,19 +41,21 @@ const HomeCarousel = () => {
         setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
     };
 
+
     const totalSlides = slides.length;
 
     useEffect(() => {
+
         const interval = setInterval(() => {
             nextSlide();
         }, 3000); // Change slide every 5 seconds
         return () => clearInterval(interval); // Clear interval on unmount
-    }, [currentSlide]);
+    }, [currentSlide, totalSlides]);
 
 
     return (
-        <div className="relative h-[130vh] z-10">
-            {/* Arrows */}
+        <div className="relative min-h-[130vh] z-10">
+            
             <button onClick={prevSlide} className="absolute left-4 md:left-32 top-[20%] md:top-1/2 text-6xl z-20">
                 &larr;
             </button>
@@ -62,7 +63,6 @@ const HomeCarousel = () => {
                 &rarr;
             </button>
 
-            {/* Slides */}
             {slides.map((slide, index) => (
                 <motion.div
                     key={slide.id}
@@ -86,7 +86,7 @@ const HomeCarousel = () => {
                         <div className="w-max bg-[#c19f5f] aspect-square rounded-full p-2 my-8 mx-auto">
                             <Image className='w-44' src={"/logo.png"} alt="hero" width={100} height={100} />
                         </div>
-                        <h2 className="cormorant text-white text-8xl font-bold ">{slide.title}</h2>
+                        <h2 className="cormorant text-white text-8xl font-bold text-center">{slide.title}</h2>
                         <h2 className="cormorant text-3xl text-center md:text-6xl text-[#c19f5f] font-[500] my-3 md:whitespace-nowrap">{slide.subtitle}</h2>
                         <p className='text-[20px] text-center w-3/4 md:w-1/2'>Lightly toasted and irresistibly crunchy, our toast is made to elevate your snacking experience with every bite.</p>
                         <Link href={slide.link} className='text-[#c19f5f] text-xl uppercase border border-[#c19f5f] px-14 py-4 rounded-full mt-8'>Shop Now</Link>

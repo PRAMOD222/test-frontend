@@ -64,7 +64,7 @@ const Page = async () => {
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
                                         <h2 className='cormorant text-2xl md:text-4xl font-semibold mb-4 text-center'>Bar Cakes</h2>
-                                        <Link href={'/products/barcakes'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 group-hover:backdrop-blur-md'>Shop Now</Link>
+                                        <Link href={'/products/barcakes'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 backdrop-blur-md'>Shop Now</Link>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@ const Page = async () => {
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
                                         <h2 className='cormorant text-2xl md:text-4xl font-semibold mb-4 text-center'>Cheese Staws</h2>
-                                        <Link href={'/products/cheesestraws'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 group-hover:backdrop-blur-md'>Shop Now</Link>
+                                        <Link href={'/products/cheesestraws'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 backdrop-blur-md'>Shop Now</Link>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@ const Page = async () => {
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
                                         <h2 className='cormorant text-2xl md:text-4xl font-semibold mb-4 text-center'>Toasts</h2>
-                                        <Link href={'/products/toasts'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 group-hover:backdrop-blur-md'>Shop Now</Link>
+                                        <Link href={'/products/toasts'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 backdrop-blur-md'>Shop Now</Link>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@ const Page = async () => {
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
                                         <h2 className='cormorant text-2xl md:text-4xl font-semibold mb-4 text-center'>Lavash</h2>
-                                        <Link href={'/products/lavash'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 group-hover:backdrop-blur-md'>Shop Now</Link>
+                                        <Link href={'/products/lavash'} className=' text-[#c19f5f] text-sm uppercase border border-[#c19f5f] px-2 md:px-6 py-2 rounded-full  bg-black/40 hover:border-white hover:text-white transition-all duration-500 backdrop-blur-md'>Shop Now</Link>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@ const Page = async () => {
                         <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
                         <div className="flex flex-col items-center">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>30</h2>
+                            <h2 className='cormorant text-8xl text-[#c19f5f]'>30+</h2>
                             <h3 className='cormorant text-4xl '>Products</h3>
                         </div>
                         <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
@@ -155,7 +155,7 @@ const Page = async () => {
                         </div>
 
                         <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-3xl text-[#c19f5f]'>20</h2>
+                            <h2 className='cormorant text-3xl text-[#c19f5f]'>30+</h2>
                             <h3 className='cormorant text-xl '>Products</h3>
                         </div>
 

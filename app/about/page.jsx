@@ -28,9 +28,9 @@ const About = () => {
             <section>
                 <div className="flex flex-col md:flex-row mx-6 md:mx-32 gap-4 md:gap-8 py-4 md:py-8">
                     <div className=" md:w-1/2 space-y-8">
-                        <h2 className='cormorant text-4xl'>Lorem ipsum dolor <span className='text-[#c19f5f]'> sit amet </span> consectetur adipisicing elit. </h2>
+                        <h2 className='cormorant text-4xl'>Handcrafted Baked Goods <span className='text-[#c19f5f]'> for a Flavorful </span>  Experience </h2>
 
-                        <p className='text-gray-500 '>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis in a exercitationem deserunt labore consequatur, dignissimos rem, fuga dolor voluptatem culpa saepe excepturi suscipit.</p>
+                        <p className='text-gray-500 '>At Al Forno, we bring you a wide range of artisanal baked goods, including flavored toasts, tea cakes, lavash, and more, crafted with care to deliver unmatched quality and taste.</p>
 
                         <div className='text-[#c19f5f] hover:text-white transition-all duration-300 flex items-center gap-2'  >
                             <FaRegFileAlt className='inline text-2xl' />
@@ -62,24 +62,24 @@ const About = () => {
                     <div className=" flex justify-center items-center gap-4">
                         <Image width={200} height={200} src="/organic.svg" alt="about" className='w-1/4' />
                         <div>
-                            <h2 className='cormorant text-2xl' >Natural Organic Product</h2>
-                            <p className='text-gray-500'>Nullam vel condimentum odio, non dictum nulla. Etiam iaculis elit ultricies.</p>
+                            <h2 className='cormorant text-2xl' >Artisan Bakes</h2>
+                            <p className='text-gray-500'>Handcrafted baked goods made fresh daily, offering exceptional quality and delightful flavors.</p>
                         </div>
                     </div>
 
                     <div className="flex-row-reverse md:flex-row flex justify-center items-center gap-4">
                         <Image width={200} height={200} src="/organic.svg" alt="about" className='w-1/4' />
                         <div>
-                            <h2 className='cormorant text-2xl' >Natural Organic Product</h2>
-                            <p className='text-gray-500'>Nullam vel condimentum odio, non dictum nulla. Etiam iaculis elit ultricies.</p>
+                            <h2 className='cormorant text-2xl' >Freshly Baked</h2>
+                            <p className='text-gray-500'>Explore a variety of premium bakery treats crafted with care for a wholesome experience.</p>
                         </div>
                     </div>
 
                     <div className=" flex justify-center items-center gap-4">
                         <Image width={200} height={200} src="/organic.svg" alt="about" className='w-1/4' />
                         <div>
-                            <h2 className='cormorant text-2xl' >Natural Organic Product</h2>
-                            <p className='text-gray-500'>Nullam vel condimentum odio, non dictum nulla. Etiam iaculis elit ultricies.</p>
+                            <h2 className='cormorant text-2xl' >Flavorful Treats</h2>
+                            <p className='text-gray-500'>Delight in our range of baked goods, from tea cakes to lavash, made with the finest ingredients.</p>
                         </div>
                     </div>
 

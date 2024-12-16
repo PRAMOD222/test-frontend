@@ -7,6 +7,7 @@ import { SlLocationPin } from "react-icons/sl";
 import { CiMail } from "react-icons/ci";
 import { CiTimer } from "react-icons/ci";
 import Styles from '@/css/home.module.css'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select"
 
 
 const Contact = () => {
@@ -110,6 +111,25 @@ const Contact = () => {
                             </div>
                             <div className="col-span-1 border border-[#c19f5f] rounded-full p-6 bg-neutral-950 flex-1 ">
                                 <input className="outline-none focus:outline-none bg-neutral-950 w-full focus:bg-neutral-950" type="email" name="email" id="email" placeholder="Email" />
+                            </div>
+                            <div className="col-span-1 border border-[#c19f5f] rounded-full p-6 bg-neutral-950 flex-1 ">
+
+                                <input className="outline-none focus:outline-none bg-neutral-950 w-full" type="text" name="phone" id="phone" placeholder="Phone" />
+
+                            </div>
+                            <div className="col-span-1 border border-[#c19f5f] rounded-full p-4 bg-neutral-950 flex-1 ">
+
+                                <Select>
+                                    <SelectTrigger className="w-full outline-none border-none text-slate-300">
+                                        <SelectValue className="" placeholder="Select Products" />
+                                    </SelectTrigger>
+                                    <SelectContent className="bg-neutral-950 text-white">
+                                        <SelectItem value="barcakes">Bar Cakes</SelectItem>
+                                        <SelectItem value="barcakes">Bar Cakes</SelectItem>
+                                        <SelectItem value="barcakes">Bar Cakes</SelectItem>
+                                    </SelectContent>
+                                </Select>
+
                             </div>
                             <div className="col-span-1 md:col-span-2 bg-neutral-950 rounded-[40px] p-6 border border-[#c19f5f]">
                                 <textarea className="outline-none focus:outline-none bg-neutral-950 w-full h-20" name="message" id="message" placeholder="Message"></textarea>

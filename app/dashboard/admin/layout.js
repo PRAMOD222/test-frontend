@@ -1,4 +1,4 @@
-import React from 'react'
+"use client"
 import DashNav from './DashNav'
 import withAuth from '@/utils/withAuth'
 

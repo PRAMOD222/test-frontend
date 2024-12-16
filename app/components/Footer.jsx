@@ -61,10 +61,11 @@ const Footer = () => {
                 </div>
 
                 <div className="">
+
                     <div className="w-max rounded-full bg-[#c19f5f] p-2">
                         <Image src="/logo.png" alt="logo" width={100} height={100} />
                     </div>
-                    <p className='text-sm text-gray-500 my-10'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni tempora dicta, ducimus sapiente ipsa dolorum omnis asperiores nihil ex laborum sequi cupiditate ipsum nam hic </p>
+                    <p className='text-sm text-gray-500 my-10'>Bringing you the finest handcrafted baked goods, made with love and care, using only the highest quality ingredients for a truly delightful experience.</p>
                     <div className="flex justify-start gap-10">
                         <Link href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
                             <FaYoutube className='inline text-xl text-[#c19f5f]' />
@@ -86,6 +87,12 @@ const Footer = () => {
                 <div className={`${Styles.shortline} mt-2 `}></div>
                 <div className="flex justify-center items-center ">
                     <h2 className='my-10' > Copyright © 2024 All Rights Reserved</h2>
+
+                    <div className="flex gap-4 mx-4 text-sky-500">
+                        <Link href="/privacy" target="_blank">Privacy Policy</Link>
+                        <Link href="/cancellation" target="_blank">Cancellation</Link>
+                        <Link href="/refund" target="_blank">Refund</Link>
+                    </div>
                 </div>
             </div>
 
