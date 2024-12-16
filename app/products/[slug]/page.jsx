@@ -41,7 +41,7 @@ const Page = ({ params }) => {
 
     return (
         <div className='text-white bg-black border border-gray-50/0 min-h-screen'>
-            <div className="mx-32 sticky top-0 z-50">
+            <div className="px-32 sticky top-0 z-50 bg-black">
                 <Navbar />
             </div>
             <div className="sticky top-0 bg-[#100f10] z-50">
@@ -81,10 +81,10 @@ const Page = ({ params }) => {
                         <div className="main-products grid md:grid-cols-4 grid-cols-1 gap-8">
                             {filteredCategory.length > 0 ? (
                                 filteredCategory.map((product) => (
-                                    <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group hover:scale-105 transition-all duration-300">
+                                    <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group md:hover:scale-105 transition-all duration-300">
                                         <div className="rounded-md overflow-hidden w-full aspect-square">
                                             <Image
-                                                className="object-cover w-full brightness-50 group-hover:brightness-100 transition-all duration-300"
+                                                className="object-cover w-full md:brightness-50 group-hover:brightness-100 transition-all duration-300"
                                                 src={`${baseApi}/${product.image[0]}`}
                                                 alt={product.name}
                                                 width={200}

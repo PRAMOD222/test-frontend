@@ -32,7 +32,7 @@ const AnimatedNav = () => {
                 initial={{ y: -150 }} // Navbar starts hidden
                 animate={{ y: showNavbar ? 0 : -150 }} // Slide down when scroll is greater than 100px
                 transition={{ duration: 0.5 }}
-                className="fixed top-0 left-0 w-full z-50 bg-black text-white py-4 shadow-lg "
+                className="fixed top-0 left-0 w-full z-40 bg-black text-white py-4 shadow-lg "
             >
                 <div className="mx-32 ">
                     <Navbar />

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Navbar from '@/app/components/Navbar';
 import MobileNav from '@/app/components/MobileNav';
 import Footer from "@/app/components/Footer";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
 
@@ -16,6 +17,7 @@ const Login = () => {
         email: "",
         password: "",
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,6 +48,8 @@ const Login = () => {
         }
     };
 
+
+
     return (
         <div >
             <div className="px-32 sticky top-0 z-50  bg-black">
@@ -59,8 +63,9 @@ const Login = () => {
                     <h1 className="text-3xl font-bold mb-6 text-center text-[#c19f5f]">Signup</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-2">Email</label>
+                            {/* <label className="block text-sm font-medium mb-2">Email</label> */}
                             <input
+                                placeholder="Email"
                                 type="email"
                                 name="email"
                                 value={formData.email}
@@ -69,23 +74,21 @@ const Login = () => {
                                 required
                             />
                         </div>
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium mb-2">Password</label>
+                        <div className="mb-4 rounded-lg focus:border bg-neutral-600 focus:border-[#c19f5f] flex items-center px-2">
+                            {/* <label className="block text-sm font-medium mb-2">Password</label> */}
                             <input
-                                type="password"
+                                placeholder="Password"
+                                type={showPassword ? "text" : "password"}
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                className="w-full py-2 outline-none bg-neutral-600 rounded-lg"
                                 required
                             />
+                            {showPassword ? <FaRegEyeSlash onClick={() => setShowPassword(false)} className="text-xl cursor-pointer text-[#c19f5f]" /> :
+                            < FaRegEye onClick={() => setShowPassword(true)} className="text-xl cursor-pointer text-[#c19f5f]" />}
                         </div>
-                        <button
-                            type="submit"
-                            className="w-full bg-[#c19f5f] text-white p-2 rounded-lg hover:bg-[#c19f5f]/80 transition duration-300"
-                        >
-                            Login
-                        </button>
+                        <button type="submit" className="w-full bg-[#c19f5f] text-white p-2 rounded-lg hover:bg-[#c19f5f]/80 transition duration-300" >Login</button>
                     </form>
                     <p className="mt-4 text-center">
                         Don&apos;t have an account? <Link href="/signup" className="text-[#c19f5f]">Signup</Link>

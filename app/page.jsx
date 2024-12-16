@@ -7,12 +7,16 @@ import Footer from './components/Footer';
 import AnimatedNav from './components/AnimatedNav';
 import HomepageProducts from './components/HomepageProducts';
 import HomeCarousel from './components/HomeCarousel';
+import CartIcon from './components/CartIcon';
+import LoginIcon from './components/LoginIcon';
+
 
 
 
 const Page = async () => {
 
     const baseApi = process.env.NEXT_PUBLIC_BASE_API;
+
 
     const response = await fetch(`${baseApi}/api/products/all`);
     const products = await response.json();
@@ -41,6 +45,9 @@ const Page = async () => {
                             <li> <Link href={'/about'} className=''>About + </Link></li>
                             <li> <Link href={'/'} className=''>Enquire Now </Link></li>
                             {/* <li> <Link href={'/contact'} className=''>Contact </Link></li> */}
+                            <CartIcon />
+                            <LoginIcon />
+                            {/* <li className=''><Link href={'/login'}><FaUserAlt /></Link></li> */}
                         </ul>
                         {/* <Image className='' src="/line.png" alt="line" width={1000} height={10} /> */}
 
@@ -52,7 +59,7 @@ const Page = async () => {
                 <section className='mx-6 md:mx-32 '>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 
-                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
+                        <div className={`   -translate-y-6 z-30 overflow-hidden`}>
                             <div className={`${Styles.product1} aspect-[3/4] p-3 hover:scale-110 transition-all duration-500 group  `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -63,7 +70,7 @@ const Page = async () => {
                             </div>
                         </div>
 
-                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
+                        <div className={`   -translate-y-6 z-30 overflow-hidden`}>
                             <div className={`${Styles.product4} aspect-[3/4] p-3 hover:scale-110 transition-all duration-500 group `}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -74,7 +81,7 @@ const Page = async () => {
                             </div>
                         </div>
 
-                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
+                        <div className={`   -translate-y-6 z-30 overflow-hidden`}>
                             <div className={`${Styles.product2} aspect-[3/4] p-3 hover:scale-110 transition-all duration-500 group`}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -85,7 +92,7 @@ const Page = async () => {
                             </div>
                         </div>
 
-                        <div className={`   -translate-y-6 z-40 overflow-hidden`}>
+                        <div className={`   -translate-y-6 z-30 overflow-hidden`}>
                             <div className={`${Styles.product3} aspect-[3/4] p-3 hover:scale-110 transition-all duration-500 group`}>
                                 <div className="border border-[#c19f5f] h-full w-full flex items-end justify-center hover:scale-90 transition-all duration-500">
                                     <div className='my-8 flex flex-col justify-center items-center'>
@@ -105,7 +112,7 @@ const Page = async () => {
                     <div className='mx-6 md:mx-32'>
 
                         <div className="text w-full md:w-1/2 py-6 md:py-32  ">
-                            <h2 className='cormorant text-2xl md:text-3xl text-[#c19f5f]'>DISCOVER A NEW LEVEL OF TAS E</h2>
+                            <h2 className='cormorant text-2xl md:text-3xl text-[#c19f5f]'>DISCOVER A NEW LEVEL OF TASTE</h2>
                             <div className={`${Styles.shortline} w-1/2 my-4`}></div>
                             <p className='md:text-xl md:leading-[40px]'>At Al Forno, we take great care and pride in crafting products that offer a flavorful culinary experience. Our handcrafted creations are baked throughout the day in our ovens, ensuring freshness and quality in every bite.</p><p className='md:text-xl md:leading-[40px] mt-8'> From our flavored toasts and French cheese straws to lavash, tea cakes and much more, we bring you a diverse selection of treats.</p>
                             <button className='text-[#c19f5f] text-xl uppercase border border-[#c19f5f] px-14 py-4 rounded-full mt-8'>Read More</button>

@@ -1,5 +1,6 @@
 import React from 'react'
 import DashNav from './DashNav'
+import withAuth from '@/utils/withAuth'
 
 const layout = ({ children }) => {
     return (
@@ -14,4 +15,4 @@ const layout = ({ children }) => {
     )
 }
 
-export default layout
+export default withAuth(layout, ['admin']);

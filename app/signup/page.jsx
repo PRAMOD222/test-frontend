@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import Navbar from '@/app/components/Navbar';
 import MobileNav from '@/app/components/MobileNav';
 import Footer from "@/app/components/Footer";
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
 
@@ -12,8 +15,9 @@ const Signup = () => {
 
     const router = useRouter();
     const [formData, setFormData] = useState({
-        username: "",
+        name: "",
         email: "",
+        phone: "",
         password: "",
     });
 
@@ -29,24 +33,56 @@ const Signup = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
             });
+            const data = await response.json();
+            console.log(data);
 
             if (response.ok) {
-                console.log('Signup successful');
-                const data = await response.json();
-                console.log(data);
+                toast.success('Account Created Successfully', {
+                    position: "top-right",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+
                 router.push("/login");
 
             } else {
-                console.error("Signup failed");
+                toast.error(data.message, {
+                    position: "top-right",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
             }
+
+
+
+
         } catch (error) {
-            console.error("Error during signup:", error);
+            toast.error('Something went wrong', {
+                position: "top-right",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            })
         }
     };
 
     return (
         <div className="bg-black">
-            <div className="px-32 sticky top-0 z-50  bg-black">
+            <div className="px-32 sticky top-0 z-40  bg-black">
                 <Navbar />
             </div>
             <div className="sticky top-0 bg-[#100f10] z-50">
@@ -57,19 +93,23 @@ const Signup = () => {
                     <h1 className="text-3xl font-bold mb-6 text-center text-[#c19f5f]">Signup</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-2 ">Username</label>
+                            {/* <label className="block text-sm font-medium mb-2 ">Name</label> */}
                             <input
+                                autoComplete="name"
+                                placeholder="Name"
                                 type="text"
-                                name="username"
-                                value={formData.username}
+                                name="name"
+                                value={formData.name}
                                 onChange={handleChange}
-                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                className="w-full p-2 rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
                                 required
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-2">Email</label>
+                            {/* <label className="block text-sm font-medium mb-2">Email</label> */}
                             <input
+                                autoComplete="email"
+                                placeholder="Email"
                                 type="email"
                                 name="email"
                                 value={formData.email}
@@ -79,8 +119,23 @@ const Signup = () => {
                             />
                         </div>
                         <div className="mb-4">
-                            <label className="block text-sm font-medium mb-2">Password</label>
+                            {/* <label className="block text-sm font-medium mb-2">Phone</label> */}
                             <input
+                                autoComplete="tel"
+                                placeholder="Phone"
+                                type="tel"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                required
+                            />
+                        </div>
+                        <div className="mb-4">
+                            {/* <label className="block text-sm font-medium mb-2">Password</label> */}
+                            <input
+                                autoComplete="new-password"
+                                placeholder="Password"
                                 type="password"
                                 name="password"
                                 value={formData.password}

@@ -1,6 +1,7 @@
 "use client";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import MobileNav from '@/app/components/MobileNav';
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table"
@@ -17,10 +18,10 @@ const Cart = () => {
 
 
     const [cart, setCart] = useState(null);
-
+    
     const fetchCart = async () => {
         try {
-            const token = localStorage.getItem('token'); // Retrieve the token from localStorage or wherever you store it
+            // Retrieve the token from localStorage or wherever you store it
 
             const response = await fetch(`${baseApi}/api/cart/fetch`, {
                 method: 'POST',
@@ -88,7 +89,10 @@ const Cart = () => {
 
 
     useEffect(() => {
-        fetchCart();
+        const token = localStorage.getItem('token'); 
+        if(token){
+            fetchCart();
+        }
     }, []);
 
     return (
@@ -96,10 +100,13 @@ const Cart = () => {
             <div className="px-32 sticky top-0 bg-black z-40">
                 <Navbar />
             </div>
+            <div className="sticky top-0 bg-[#100f10] z-50">
+                <MobileNav />
+            </div>
             <section>
-                <Image className="w-full h-[40vh] origin-center object-cover  bg-fixed -z-10" src="/cart.png" alt="cart" width={2000} height={2000} />
+                <Image className="w-full md:h-[40vh] origin-center object-cover  bg-fixed -z-10" src="/cart.png" alt="cart" width={2000} height={2000} />
             </section>
-            <div className="mx-32">
+            <div className="mx-6 md:mx-32">
                 {/* <div className=" min-h-screen my-8">
                     <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
                     {cart && cart.length > 0 ? (
@@ -156,7 +163,7 @@ const Cart = () => {
                         <TableBody>
                             {cart.map((item) => (
                                 <TableRow key={item.product._id}>
-                                    <TableCell className="flex gap-4 items-center">
+                                    <TableCell className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-center md:justify-start">
                                         <Image
                                             className="aspect-square"
                                             width={100}
