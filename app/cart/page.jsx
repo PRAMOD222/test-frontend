@@ -8,6 +8,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "
 import { MdDelete } from "react-icons/md";
 import { updatequantity, removeFromCart } from '@/store/cartSlice';
 import { useDispatch } from 'react-redux';
+import Link from "next/link";
+
 
 
 
@@ -18,7 +20,7 @@ const Cart = () => {
 
 
     const [cart, setCart] = useState(null);
-    
+
     const fetchCart = async () => {
         try {
             // Retrieve the token from localStorage or wherever you store it
@@ -89,8 +91,8 @@ const Cart = () => {
 
 
     useEffect(() => {
-        const token = localStorage.getItem('token'); 
-        if(token){
+        const token = localStorage.getItem('token');
+        if (token) {
             fetchCart();
         }
     }, []);
@@ -103,52 +105,10 @@ const Cart = () => {
             <div className="sticky top-0 bg-[#100f10] z-50">
                 <MobileNav />
             </div>
-            <section>
+            {/* <section>
                 <Image className="w-full md:h-[40vh] origin-center object-cover  bg-fixed -z-10" src="/cart.png" alt="cart" width={2000} height={2000} />
-            </section>
-            <div className="mx-6 md:mx-32">
-                {/* <div className=" min-h-screen my-8">
-                    <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
-                    {cart && cart.length > 0 ? (
-                        <div className="space-y-4">
-                            {cart.map((item) => (
-                                <div key={item.product._id} className="flex justify-between items-center border p-4">
-                                    <div className="flex  gap-4">
-                                        <div className='border'>
-                                            {item.product.image && <Image width={100} height={100} src={`${baseApi}/${item.product.image[0]}`} alt={item.product.name} className="w-32 h-32 object-cover rounded" />}
-                                            <div className="buttons flex justify-between gap-3 my-4">
-                                                <span className="text-xl border rounded-full p-1"><HiPlus /></span>
-                                                <span className=" border px-4 ">{item.quantity}</span>
-                                                <span className="text-xl border rounded-full p-1"><HiMinusSm /></span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h2 className="text-2xl text-[#c19f5f] co font-semibold">{item.product.name}</h2>
-                                            <p className="text-sm text-gray-500">₹{item.product.price}</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-center gap-4">
-                                        <button
-                                            onClick={() => updateCartQuantity(item.product._id, item.quantity - 1)}
-                                            className="px-2 py-1  text-gray-600 rounded"
-                                        >
-                                            -
-                                        </button>
-                                        <span>{item.quantity}</span>
-                                        <button
-                                            onClick={() => updateCartQuantity(item.product._id, item.quantity + 1)}
-                                            className="px-2 py-1  text-gray-600 rounded"
-                                        >
-                                            +
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <p className="text-lg">Your cart is empty</p>
-                    )}
-                </div> */}
+            </section> */}
+            <div className="mx-6 md:mx-32 mt-10">
 
                 {cart && cart.length > 0 ? (
                     <Table>
@@ -195,7 +155,11 @@ const Cart = () => {
                         </TableBody>
                     </Table>
                 ) : (
-                    <h2>Your Cart is Empty</h2>
+
+                    <section className="bg-black text-white min-h-[60vh] space-y-6 flex flex-col items-center">
+                        <h2 className="text-center text-[#c19f5f] text-3xl font-semibold cormorant ">Your Cart is Empty</h2>
+                        <Link href="/" className="border border-[#c19f5f] py-2 px-4 bg-[#c19f5f] rounded-md hover:bg-black hover:text-[#c19f5f]">Continue Shopping</Link>
+                    </section>
                 )}
 
 

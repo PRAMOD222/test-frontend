@@ -154,7 +154,7 @@ const Products = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:3001/api/category/list-categories');
+      const response = await fetch(`${baseApi}/api/category/list-categories`);
       const data = await response.json();
       console.log(data);
       setCategories(data);

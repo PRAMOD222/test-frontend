@@ -16,8 +16,8 @@ const Navbar = () => {
                     <li> <Link href={'/products/lavash'}> Lavash</Link></li>
                     <li> <Link href={'/products/cheesestraws'}> Cheese Straws</Link></li>
                     <li> <Link href={'/products/breadsticks'} className=''>Breadsticks </Link></li>
-                    <li> <Link href={'/about'}>About + </Link></li>
-                    <li>Enquire Now</li>
+                    <li> <Link href={'/about'}>About </Link></li>
+                    <li> <Link href={'/contact'}>Enquire Now </Link></li>
                     <LoginIcon />
                     <CartIcon />
                 </ul>

@@ -88,72 +88,81 @@ const Signup = () => {
             <div className="sticky top-0 bg-[#100f10] z-50">
                 <MobileNav />
             </div>
-            <div className="min-h-screen bg-black flex flex-col justify-center items-center">
-                <div className="w-full text-white max-w-md bg-neutral-900 shadow-md rounded-lg p-8">
-                    <h1 className="text-3xl font-bold mb-6 text-center text-[#c19f5f]">Signup</h1>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
-                            {/* <label className="block text-sm font-medium mb-2 ">Name</label> */}
-                            <input
-                                autoComplete="name"
-                                placeholder="Name"
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="w-full p-2 rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
-                                required
-                            />
-                        </div>
-                        <div className="mb-4">
-                            {/* <label className="block text-sm font-medium mb-2">Email</label> */}
-                            <input
-                                autoComplete="email"
-                                placeholder="Email"
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
-                                required
-                            />
-                        </div>
-                        <div className="mb-4">
-                            {/* <label className="block text-sm font-medium mb-2">Phone</label> */}
-                            <input
-                                autoComplete="tel"
-                                placeholder="Phone"
-                                type="tel"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
-                                required
-                            />
-                        </div>
-                        <div className="mb-4">
-                            {/* <label className="block text-sm font-medium mb-2">Password</label> */}
-                            <input
-                                autoComplete="new-password"
-                                placeholder="Password"
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
-                                required
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            className="w-full bg-[#c19f5f] text-white p-2 rounded-lg hover:bg-[#c19f5f]/80 transition duration-300"
-                        >
-                            Signup
-                        </button>
-                    </form>
-                    <p className="mt-4 text-center">
-                        Already have an account? <Link href="/login" className="text-[#c19f5f]">Login</Link>
-                    </p>
+
+            <div className="min-h-screen space-y-10 pt-10">
+                <section className=" flex flex-col items-center justify-center">
+                    <h2 className="text-2xl md:text-4xl font-semibold cormorant text-[#c19f5f]">Welcome To Al Forno</h2>
+                    <p className="text-lg md:text-xl italic my-2 text-neutral-400 text-center max-w-md">"Bringing you the joy of freshly baked moments."</p>
+                </section>
+
+
+                <div className=" bg-black flex flex-col justify-center items-center">
+                    <div className="w-full text-white max-w-md bg-neutral-900 shadow-md rounded-lg p-8">
+                        <h1 className="text-3xl font-bold mb-6 text-center text-[#c19f5f]">Signup</h1>
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-4">
+                                {/* <label className="block text-sm font-medium mb-2 ">Name</label> */}
+                                <input
+                                    autoComplete="name"
+                                    placeholder="Name*"
+                                    type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    className="w-full p-2 rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                {/* <label className="block text-sm font-medium mb-2">Email</label> */}
+                                <input
+                                    autoComplete="email"
+                                    placeholder="Email*"
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                {/* <label className="block text-sm font-medium mb-2">Phone</label> */}
+                                <input
+                                    autoComplete="tel"
+                                    placeholder="Phone*"
+                                    type="tel"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                    required
+                                />
+                            </div>
+                            <div className="mb-4">
+                                {/* <label className="block text-sm font-medium mb-2">Password</label> */}
+                                <input
+                                    autoComplete="new-password"
+                                    placeholder="Password*"
+                                    type="password"
+                                    name="password"
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    className="w-full p-2  rounded-lg outline-none focus:outline-1 bg-neutral-600 focus:outline-[#c19f5f]"
+                                    required
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                className="w-full bg-[#c19f5f] text-white p-2 rounded-lg hover:bg-[#c19f5f]/80 transition duration-300"
+                            >
+                                Signup
+                            </button>
+                        </form>
+                        <p className="mt-4 text-center">
+                            Already have an account? <Link href="/login" className="text-[#c19f5f]">Login</Link>
+                        </p>
+                    </div>
                 </div>
             </div>
             <Footer />

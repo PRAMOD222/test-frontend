@@ -3,10 +3,11 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/Navbar';
 import MobileNav from '@/app/components/MobileNav';
+import Footer from "@/app/components/Footer";
 import Image from 'next/image';
-import { FaAnglesRight } from "react-icons/fa6";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import AddToCart from '@/app/components/AddToCart';
+
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
 
@@ -48,9 +49,9 @@ const Page = ({ params }) => {
                 <MobileNav />
             </div>
 
-            <div className="flex flex-col md:flex-row mx-6 md:mx-32 md:gap-10 ">
+            <div className="flex flex-col md:flex-row mx-6 md:mx-32 md:gap-10 mb-10">
 
-                <div className="w-64 sticky top-0 left-0 hidden md:block ">
+                <div className="w-64 sticky h-max  top-32 left-0 hidden md:block ">
                     <h2 className="text-2xl font-bold my-4">Categories</h2>
                     <ul className='space-y-4'>
                         {categories.map((category) => (
@@ -81,16 +82,16 @@ const Page = ({ params }) => {
                         <div className="main-products grid md:grid-cols-4 grid-cols-1 gap-8">
                             {filteredCategory.length > 0 ? (
                                 filteredCategory.map((product) => (
-                                    <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group md:hover:scale-105 transition-all duration-300">
-                                        <div className="rounded-md overflow-hidden w-full aspect-square">
+                                    <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group transition-all duration-300  hover:shadow hover:shadow-[#c19f5f]">
+                                        <Link href={`/product/${product._id}`} className="rounded-md overflow-hidden w-full ">
                                             <Image
-                                                className="object-cover w-full md:brightness-50 group-hover:brightness-100 transition-all duration-300"
+                                                className="object-cover w-full md:brightness-75 group-hover:brightness-100 transition-all duration-300 aspect-square"
                                                 src={`${baseApi}/${product.image[0]}`}
                                                 alt={product.name}
                                                 width={200}
                                                 height={200}
                                             />
-                                        </div>
+                                        </Link>
 
                                         <div className="border-b border-[#c19f5f]/50 my-2  "></div>
 
@@ -107,7 +108,7 @@ const Page = ({ params }) => {
                                         </div>
 
                                         {/* <Link href={`/product/${product._id}`} className=''>View More <FaAnglesRight className='inline ' /></Link> */}
-                                        <h3 className='bg-[#c19f5f] text-white py-2 px-4 rounded-md my-2 mb-auto'>
+                                        <h3 className='group bg-[#c19f5f] text-white px-4 py-2 rounded-md my-2 mb-auto  '>
                                             <AddToCart product={product} />
                                         </h3>
 
@@ -128,16 +129,16 @@ const Page = ({ params }) => {
                             <div className="main-products grid md:grid-cols-4 grid-cols-1 gap-8">
                                 {products[category].length > 0 ? (
                                     products[category].map((product) => (
-                                        <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group hover:scale-105 transition-all duration-300">
-                                            <div className="rounded-md overflow-hidden w-full aspect-square">
+                                        <div key={product._id} className="border border-[#c19f5f] rounded-md p-2 group  transition-all duration-300">
+                                            <Link href={`/product/${product._id}`}  className="rounded-md overflow-hidden w-full ">
                                                 <Image
-                                                    className="object-cover w-full brightness-50 group-hover:brightness-100 transition-all duration-300"
+                                                    className="object-cover w-full brightness-75 group-hover:brightness-100 transition-all duration-300 aspect-square"
                                                     src={`${baseApi}/${product.image[0]}`}
                                                     alt={product.name}
                                                     width={200}
                                                     height={200}
                                                 />
-                                            </div>
+                                            </Link>
 
                                             <div className="border-b border-[#c19f5f]/50 my-2  "></div>
 
@@ -168,68 +169,12 @@ const Page = ({ params }) => {
                     ))}
                 </div>
             </div>
+
+            <Footer />
         </div>
     );
 };
 
 
-const ProductItem = ({ product }) => {
-    // State to hold the currently selected image
-    const [selectedImage, setSelectedImage] = useState(product.image[0]);
-
-    // Function to change the selected image when clicking a thumbnail
-    const handleImageClick = (image) => {
-        setSelectedImage(image);
-    };
-
-    return (
-        <div className="border p-2 m-2 flex w-full">
-            <div className="flex border rounded-md">
-                {/* Left side - Thumbnail images */}
-                <div className="flex flex-col">
-                    {product.image.map((image, index) => (
-                        <div
-                            key={index}
-                            className="m-2 h-20 w-20 border rounded overflow-hidden cursor-pointer"
-                            onClick={() => handleImageClick(image)} // Update the selected image when clicked
-                        >
-                            <Image
-                                className="object-cover w-full"
-                                src={`${baseApi}/${image}`}
-                                alt="product image"
-                                width={60}
-                                height={60}
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                {/* Right side - Main selected image */}
-                <div className="mainimage m-2">
-                    <Image
-                        width={1000}
-                        height={1000}
-                        alt="selected product image"
-                        src={`${baseApi}/${selectedImage}`}
-                        className="object-cover w-full h-full rounded-md"
-                    />
-                </div>
-            </div>
-
-            <div className="border rounded-md">
-
-                <h2 className="text-2xl">{product.name}</h2>
-                <p className="text-lg">{product.description}</p>
-                <p className="text-4xl">Price: ₹{product.price}</p>
-                <p>Quantity in stock: {product.quantity}</p>
-                <p>Discounted Price: ₹{product.discountedPrice}</p>
-                <p>Volume: {product.volume}</p>
-                <p>Barcode: {product.barcode}</p>
-                <p>Additional Info: {product.addInfo}</p>
-                <p>Veg: {product.veg ? "Yes" : "No"}</p>
-            </div>
-        </div>
-    );
-};
 
 export default Page;

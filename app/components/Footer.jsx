@@ -20,20 +20,24 @@ const Footer = () => {
                     <div className={`${Styles.shortline} mt-2 w-1/4`}></div>
 
                     <div className="links flex flex-col gap-4 mt-10">
-                        <div className="flex justify-start  gap-4">
-                            <BiPhoneCall className='text-2xl text-[#c19f5f]' />
+                        <a href="tel:+918104606275" className="flex justify-start gap-4">
+                            <BiPhoneCall className="text-2xl text-[#c19f5f]" />
                             <div>
-                                <h3 className='text-sm text-[#c19f5f]'>Call Us :</h3>
-                                <p className=' text-gray-500'>+91 81046 06275</p>
+                                <h3 className="text-sm text-[#c19f5f]">Call Us :</h3>
+                                <h2 className="text-gray-500 hover:underline">
+                                    +91 81046 06275
+                                </h2>
                             </div>
-                        </div>
-                        <div className="flex justify-start  gap-4">
-                            <CiMail className='text-2xl text-[#c19f5f]' />
+                        </a>
+                        <a href="mailto:paramount.patisserie@gmail.com" className="flex justify-start gap-4">
+                            <CiMail className="text-2xl text-[#c19f5f]" />
                             <div>
-                                <h3 className='text-sm text-[#c19f5f]'>Email</h3>
-                                <p className=' text-gray-500'>Paramount.patisserie@gmail.com</p>
+                                <h3 className="text-sm text-[#c19f5f]">Email</h3>
+                                <h2 className="text-gray-500 hover:underline">
+                                    paramount.patisserie@gmail.com
+                                </h2>
                             </div>
-                        </div>
+                        </a>
                         <div className="flex justify-start  gap-4">
                             <SlLocationPin className='text-2xl text-[#c19f5f] w-24' />
                             <div>

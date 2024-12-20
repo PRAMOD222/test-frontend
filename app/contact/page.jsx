@@ -1,3 +1,4 @@
+"use client"
 import Navbar from "@/app/components/Navbar"
 import MobileNav from "../components/MobileNav";
 import Footer from "@/app/components/Footer"
@@ -8,9 +9,117 @@ import { CiMail } from "react-icons/ci";
 import { CiTimer } from "react-icons/ci";
 import Styles from '@/css/home.module.css'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "@/components/ui/select"
+import { useState, useEffect } from "react"
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Checkbox } from "@/components/ui/checkbox"
+
+
+
 
 
 const Contact = () => {
+
+    const baseapi = process.env.NEXT_PUBLIC_BASE_API
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        category: "",
+        product: [],
+        message: "",
+    });
+    const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
+
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        console.log(formData);
+        try {
+            const response = await fetch(`${baseapi}/api/enquiry/add-enquiry`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            })
+            if (response.ok) {
+                alert("Enquiry submitted successfully");
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    category: "",
+                    product: [],
+                    message: "",
+                });
+            } else {
+                alert("An error occurred. Please try again later.");
+            }
+                
+        } catch (error) {
+            console.error("Error sending message:", error);
+            alert("An error occurred. Please try again later.");
+        }
+    }
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSelectChange = (value) => {
+        const sanitizedValue = value.trim().replace(/\s+/g, "").toLowerCase(); // Remove spaces and convert to lowercase
+        setFormData({ ...formData, category: sanitizedValue, product: [] }); // Reset products when category changes
+        setFilteredProducts(products[sanitizedValue] || []);
+        console.log(products[sanitizedValue]);
+    };
+
+    const handleProductSelect = (product) => {
+        setFormData((prevFormData) => {
+            const newProducts = prevFormData.product.includes(product)
+                ? prevFormData.product._id.filter((p) => p !== product._id)
+                : [...prevFormData.product, product._id];
+            return { ...prevFormData, product: newProducts };
+        });
+    };
+
+    // const filteredProducts = formData.category ? products[formData.category] || [] : [];
+
+    const fetchCategories = async () => {
+        try {
+            const response = await fetch(`${baseapi}/api/category/list-categories`);
+            const data = await response.json();
+            console.log(data);
+            setCategories(data);
+        } catch (error) {
+            console.error('Error fetching categories:', error);
+        }
+    };
+
+    const fetchProducts = async () => {
+        try {
+            const response = await fetch(`${baseapi}/api/products/all`);
+            const data = await response.json();
+            console.log(data);
+            setProducts(data);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    };
+
+
+    useEffect(() => {
+        fetchCategories();
+        fetchProducts();
+    }, []);
+
     return (
         <div className="bg-black min-h-screen text-white scroll-smooth">
 
@@ -103,36 +212,61 @@ const Contact = () => {
             <section className="bg-neutral-950 py-20 flex justify-center ">
 
                 <div className="form w-full md:w-1/2 mx-6 md:mx-0">
-                    <form >
+                    <form onSubmit={handleSubmit}>
                         <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10  ">
 
                             <div className="col-span-1 border border-[#c19f5f] rounded-full p-6 bg-neutral-950 flex-1 ">
-                                <input className="outline-none focus:outline-none bg-neutral-950 w-full" type="text" name="name" id="name" placeholder="Name" />
+                                <input onChange={handleChange} value={formData.name} className="outline-none focus:outline-none bg-neutral-950 w-full" type="text" name="name" id="name" placeholder="Name*" />
                             </div>
                             <div className="col-span-1 border border-[#c19f5f] rounded-full p-6 bg-neutral-950 flex-1 ">
-                                <input className="outline-none focus:outline-none bg-neutral-950 w-full focus:bg-neutral-950" type="email" name="email" id="email" placeholder="Email" />
+                                <input onChange={handleChange} value={formData.email} className="outline-none focus:outline-none bg-neutral-950 w-full focus:bg-neutral-950" type="email" name="email" id="email" placeholder="Email*" />
                             </div>
-                            <div className="col-span-1 border border-[#c19f5f] rounded-full p-6 bg-neutral-950 flex-1 ">
-
-                                <input className="outline-none focus:outline-none bg-neutral-950 w-full" type="text" name="phone" id="phone" placeholder="Phone" />
-
+                            <div className="col-span-2 border border-[#c19f5f] rounded-full p-6 bg-neutral-950 flex-1 ">
+                                <input onChange={handleChange} value={formData.phone} className="outline-none focus:outline-none bg-neutral-950 w-full" type="text" name="phone" id="phone" placeholder="Phone*" />
                             </div>
-                            <div className="col-span-1 border border-[#c19f5f] rounded-full p-4 bg-neutral-950 flex-1 ">
-
-                                <Select>
+                            <div className="col-span-1 border border-[#c19f5f] rounded-full p-4 bg-neutral-950 flex-1">
+                                <Select onValueChange={handleSelectChange}>
                                     <SelectTrigger className="w-full outline-none border-none text-slate-300">
-                                        <SelectValue className="" placeholder="Select Products" />
+                                        <SelectValue placeholder="Select Category" />
                                     </SelectTrigger>
                                     <SelectContent className="bg-neutral-950 text-white">
-                                        <SelectItem value="barcakes">Bar Cakes</SelectItem>
-                                        <SelectItem value="barcakes">Bar Cakes</SelectItem>
-                                        <SelectItem value="barcakes">Bar Cakes</SelectItem>
+                                        {categories.map((category) => (
+                                            <SelectItem key={category._id} value={category.name}>
+                                                {category.name}
+                                            </SelectItem>
+                                        ))}
                                     </SelectContent>
                                 </Select>
+                            </div>
+                            <div className="col-span-1 border border-[#c19f5f] rounded-full flex items-center bg-neutral-950 flex-1">
+                                <Popover>
+                                    <PopoverTrigger className="w-full text-start ml-2 p-4 text-slate-300">
+                                        {formData.product.length > 0
+                                            ? `Selected: ${formData.product.length}`
+                                            : "Select Products"}
+                                    </PopoverTrigger>
+                                    <PopoverContent className="bg-neutral-900 text-white border border-[#c19f5f] w-max">
+                                        <ScrollArea className="h-[200px] w-[350px]">
+                                            {filteredProducts.map((product) => (
+                                                <div key={product} className="flex items-center gap-2">
+                                                    <Checkbox
+                                                    className="text-[#c19f5f] checked:text-[#c19f5f]"
+                                                        id={product._id}
+                                                        name={product._id}
+                                                        value={product.name}
+                                                        checked={formData.product.includes(product._id)}
+                                                        onCheckedChange={() => handleProductSelect(product)}
+                                                    />
+                                                    <label className="text-[#c19f5f]" htmlFor={product._id}>{product.name}</label>
 
+                                                </div>
+                                            ))}
+                                        </ScrollArea>
+                                    </PopoverContent>
+                                </Popover>
                             </div>
                             <div className="col-span-1 md:col-span-2 bg-neutral-950 rounded-[40px] p-6 border border-[#c19f5f]">
-                                <textarea className="outline-none focus:outline-none bg-neutral-950 w-full h-20" name="message" id="message" placeholder="Message"></textarea>
+                                <textarea onChange={handleChange} value={formData.message} className="outline-none focus:outline-none bg-neutral-950 w-full h-20" name="message" id="message" placeholder="Message*"></textarea>
                             </div>
                         </div>
                         <div className="my-4 md:my-10">

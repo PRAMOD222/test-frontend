@@ -9,13 +9,13 @@ const AddToCartButton = ({ product }) => {
     const router = useRouter();
 
     const addProductToCart = async (product) => {
-       
+
+        dispatch(addToCart(product));
+        dispatch(toggleSideCart(true));
         try {
             const token = localStorage.getItem('token'); // Retrieve the token from localStorage or wherever you store it
             if (token) {
-                dispatch(addToCart(product));
-                dispatch(toggleSideCart(true));
-                
+
                 const response = await fetch(`${baseApi}/api/cart/add`, {
                     method: 'POST',
                     headers: {

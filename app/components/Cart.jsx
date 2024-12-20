@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import Image from 'next/image';
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { MdDelete } from "react-icons/md";
+import Link from 'next/link';
 
 
 const baseApi = process.env.NEXT_PUBLIC_BASE_API;
@@ -66,6 +67,8 @@ const Cart = () => {
         }
     };
 
+
+
     
 
     useEffect(() => {
@@ -107,6 +110,10 @@ const Cart = () => {
                         <SheetTitle>Your Cart</SheetTitle>
 
                         <button className="absolute top-4 right-4 text-white" onClick={() => dispatch(toggleSideCart())} > ✕ </button>
+
+                        <div className=''>
+                            <Link className='border rounded-xl bg-gray-800 px-2 py-1' href='/cart'>Go To Cart</Link>
+                        </div>
                         <ScrollArea className="rounded-md h-[90vh]">
 
                             <div className="h-screen w-full space-y-6">

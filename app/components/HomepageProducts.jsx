@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Styles from '@/css/home.module.css'
 import AddToCart from '@/app/components/AddToCart';
+import Link from 'next/link';
+
 
 
 
@@ -13,7 +15,7 @@ const HomepageProducts = () => {
     const baseApi = process.env.NEXT_PUBLIC_BASE_API;
     const [products, setProducts] = useState({});
 
-    
+
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -27,26 +29,28 @@ const HomepageProducts = () => {
         };
 
         fetchProducts();
-    }, [ baseApi ]);
+    }, [baseApi]);
 
     const renderProducts = () => {
         switch (activeTab) {
             case 'Bar Cakes':
                 return (
-                    <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
+                    <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10 ">
 
                         {products.barcakes && products.barcakes.slice(0, 6).map((product) => (
                             <div key={product._id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                <Link href={`/product/${product._id}`} className='w-1/4'>
+                                    <Image className=' aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                </Link>
                                 <div>
                                     <div className='cormorant md:text-2xl flex justify-between'>
-                                        <h2>{product.name}</h2>
+                                        <Link href={`/product/${product._id}`}>{product.name}</Link>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
-                                        <p className='text-xs text-[#c19f5f]'>
+                                        <Link href={`/product/${product._id}`} className='text-xs text-[#c19f5f]'>
                                             {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
-                                        </p>
+                                        </Link>
                                         {/* <button onClick={() => addProductToCart(product)} className='whitespace-nowrap underline'>Add to Cart</button> */}
                                         <div className='w-max'>
                                             <AddToCart product={product} />
@@ -61,17 +65,19 @@ const HomepageProducts = () => {
                 return (
                     <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
                         {products.toasts && products.toasts.slice(0, 6).map((product) => (
-                            <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                            <div key={product._id} className="flex items-center gap-4">
+                                <Link href={`/product/${product._id}`} className='w-1/4'>
+                                    <Image className='aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                                </Link>
                                 <div>
                                     <div className='cormorant md:text-3xl flex justify-between'>
-                                        <h2>{product.name}</h2>
+                                        <Link href={`/product/${product._id}`}>{product.name}</Link>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
-                                        <p className='text-xs md:text-sm text-[#c19f5f]'>
+                                        <Link href={`/product/${product._id}`} className='text-xs md:text-sm text-[#c19f5f]'>
                                             {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
-                                        </p>
+                                        </Link>
                                         <div className='w-max'>
                                             <AddToCart product={product} />
                                         </div>
@@ -86,17 +92,19 @@ const HomepageProducts = () => {
                 return (
                     <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
                         {products.cheesestraws && products.cheesestraws.slice(0, 6).map((product) => (
-                            <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                            <div key={product._id} className="flex items-center gap-4">
+                            <Link href={`/product/${product._id}`} className='w-1/4'>
+                                <Image className=' aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                            </Link>
                                 <div>
                                     <div className='cormorant md:text-3xl flex justify-between'>
-                                        <h2>{product.name}</h2>
+                                        <Link href={`/product/${product._id}`}>{product.name}</Link>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
-                                        <p className='text-xs md:text-sm text-[#c19f5f]'>
+                                        <Link href={`/product/${product._id}`} className='text-xs md:text-sm text-[#c19f5f]'>
                                             {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
-                                        </p>
+                                        </Link>
                                         <div className='w-max'>
                                             <AddToCart product={product} />
                                         </div>
@@ -110,17 +118,19 @@ const HomepageProducts = () => {
                 return (
                     <div className="products grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-10">
                         {products.lavash && products.lavash.slice(0, 6).map((product) => (
-                            <div key={product.id} className="flex items-center gap-4">
-                                <Image className='w-1/4 aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                            <div key={product._id} className="flex items-center gap-4">
+                            <Link href={`/product/${product._id}`} className='w-1/4'>
+                                <Image className=' aspect-square object-cover rounded-md md:rounded-full' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />
+                            </Link>
                                 <div>
                                     <div className='cormorant md:text-3xl flex justify-between'>
-                                        <h2>{product.name}</h2>
+                                        <Link href={`/product/${product._id}`}>{product.name}</Link>
                                         <h2 className='whitespace-nowrap'>{product.price} /-</h2>
                                     </div>
                                     <div className='flex justify-between gap-4'>
-                                        <p className='text-xs md:text-sm text-[#c19f5f]'>
+                                        <Link href={`/product/${product._id}`} className='text-xs md:text-sm text-[#c19f5f]'>
                                             {product.description.length > 80 ? product.description.slice(0, 80) + '...' : product.description}
-                                        </p>
+                                        </Link>
                                         <div className='w-max'>
                                             <AddToCart product={product} />
                                         </div>

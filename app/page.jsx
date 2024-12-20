@@ -43,7 +43,7 @@ const Page = async () => {
                             <li> <Link href={'/products/cheesestraws'} className=''>Cheese Straws </Link></li>
                             <li> <Link href={'/products/breadsticks'} className=''>Breadsticks </Link></li>
                             <li> <Link href={'/about'} className=''>About + </Link></li>
-                            <li> <Link href={'/'} className=''>Enquire Now </Link></li>
+                            <li> <Link href={'/contact'} className=''>Enquire Now </Link></li>
                             {/* <li> <Link href={'/contact'} className=''>Contact </Link></li> */}
                             <CartIcon />
                             <LoginIcon />

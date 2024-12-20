@@ -4,6 +4,15 @@ import Footer from "@/app/components/Footer"
 import MobileNav from "@/app/components/MobileNav"
 import Image from 'next/image';
 import { FaRegFileAlt } from "react-icons/fa";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 const About = () => {
     return (
@@ -34,10 +43,27 @@ const About = () => {
 
                         <div className='text-[#c19f5f] hover:text-white transition-all duration-300 flex items-center gap-2'  >
                             <FaRegFileAlt className='inline text-2xl' />
-                            <h2 className='cormorant text-2xl'>Download Brochure</h2>
+                            <a download={true} target='_blank' href="/alforno.pdf" className='cormorant text-2xl'>Download Brochure</a>
                         </div>
 
-                        <button type="submit" className="border rounded-full w-[40%] py-5 border-[#c19f5f] hover:bg-[#c19f5f] hover:text-neutral-950 transition-all duration-300">Read More </button>
+
+                        <Dialog>
+                            <DialogTrigger className='w-full flex justify-start'>
+                                <button type="submit" className="border rounded-full w-[40%] py-5 border-[#c19f5f] hover:bg-[#c19f5f] hover:text-neutral-950 transition-all duration-300">Read More </button>
+                            </DialogTrigger>
+                            <DialogContent className='bg-neutral-900 text-gray-400 border border-[#c19f5f] w-1/2'>
+                                    
+                                    <DialogDescription className='text-lg'>
+                                        <h2 className='cormorant text-4xl text-[#c19f5f]'>About Al Forno</h2>
+                                        We are a family-owned & operated wholesale bakery committed to supplying our customer with the finest quality baked goods. At Al Forno, we take extra care and pride in making quality products that will take you on a flavorful culinary experience.
+                                        <br /> 
+                                        <br />
+                                        Handcrafted and baked throughout the day in our ovens, you’ll find flavored toasts, French cheese straws, lavash, almond sticks, palmiers, tea cakes and much more. Every ingredient, every method, every piece of equipment and every baker who touches our product is chosen to produce the highest and finest quality in the market.
+
+                                    </DialogDescription>
+                            </DialogContent>
+                        </Dialog>
+
 
                     </div>
                     <div className=" md:w-1/2 flex gap-8 md:p-4">
@@ -97,52 +123,52 @@ const About = () => {
 
             <section className='mx-6 md:mx-32 py-10 md:py-20'>
 
-            <div className="md:flex justify-between hidden">
-                        <div className="">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
-                        <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
+                <div className="md:flex justify-between hidden">
+                    <div className="flex flex-col items-center ">
+                        <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
+                        <h3 className='cormorant text-4xl '>Stores</h3>
+                    </div>
+                    <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
-                        <div className="">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
-                        <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
+                    <div className="flex flex-col items-center">
+                        <h2 className='cormorant text-8xl text-[#c19f5f]'>30+</h2>
+                        <h3 className='cormorant text-4xl '>Products</h3>
+                    </div>
+                    <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
-                        <div className="">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
-                        <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
+                    <div className="flex flex-col items-center">
+                        <h2 className='cormorant text-8xl text-[#c19f5f]'>07</h2>
+                        <h3 className='cormorant text-4xl '>Years of Experience</h3>
+                    </div>
+                    <Image className='w-3 h-max' width={100} height={100} alt='line' src={'/chottiline.png'} />
 
-                        <div className="">
-                            <h2 className='cormorant text-8xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
+                    <div className="flex flex-col items-center">
+                        <h2 className='cormorant text-8xl text-[#c19f5f]'>30</h2>
+                        <h3 className='cormorant text-4xl '>Team of Chefs</h3>
+                    </div>
+                </div>
+
+                <div className='md:hidden grid grid-cols-2 gap-4'>
+                    <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                        <h2 className='cormorant text-3xl text-[#c19f5f]'>230</h2>
+                        <h3 className='cormorant text-xl '>Stores</h3>
                     </div>
 
-                    <div className='md:hidden grid grid-cols-2 gap-4'>
-                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
-
-                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
-
-                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
-
-                        <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
-                            <h2 className='cormorant text-6xl text-[#c19f5f]'>230</h2>
-                            <h3 className='cormorant text-4xl '>Stores</h3>
-                        </div>
+                    <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                        <h2 className='cormorant text-3xl text-[#c19f5f]'>30+</h2>
+                        <h3 className='cormorant text-xl '>Products</h3>
                     </div>
+
+                    <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                        <h2 className='cormorant text-3xl text-[#c19f5f]'>07</h2>
+                        <h3 className='cormorant text-xl '>Years of Experience</h3>
+                    </div>
+
+                    <div className="border rounded-md flex flex-col justify-center items-center border-gray-700">
+                        <h2 className='cormorant text-3xl text-[#c19f5f]'>30</h2>
+                        <h3 className='cormorant text-xl '>Team of Chefs</h3>
+                    </div>
+                </div>
 
 
             </section>

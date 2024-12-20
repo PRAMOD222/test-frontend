@@ -49,13 +49,29 @@ module.exports = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-			
   		},
-  		// borderRadius: {
-  		// 	lg: 'var(--radius)',
-  		// 	md: 'calc(var(--radius) - 2px)',
-  		// 	sm: 'calc(var(--radius) - 4px)'
-  		// }
+  		animation: {
+  			'shiny-text': 'shiny-text 8s infinite',
+  			pulse: 'pulse var(--duration) ease-out infinite'
+  		},
+  		keyframes: {
+  			'shiny-text': {
+  				'0%, 90%, 100%': {
+  					'background-position': 'calc(-100% - var(--shiny-width)) 0'
+  				},
+  				'30%, 60%': {
+  					'background-position': 'calc(100% + var(--shiny-width)) 0'
+  				}
+  			},
+  			pulse: {
+  				'0%, 100%': {
+  					boxShadow: '0 0 0 0 var(--pulse-color)'
+  				},
+  				'50%': {
+  					boxShadow: '0 0 0 8px var(--pulse-color)'
+  				}
+  			}
+  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
