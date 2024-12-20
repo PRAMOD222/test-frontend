@@ -92,7 +92,7 @@ const Signup = () => {
             <div className="min-h-screen space-y-10 pt-10">
                 <section className=" flex flex-col items-center justify-center">
                     <h2 className="text-2xl md:text-4xl font-semibold cormorant text-[#c19f5f]">Welcome To Al Forno</h2>
-                    <p className="text-lg md:text-xl italic my-2 text-neutral-400 text-center max-w-md">"Bringing you the joy of freshly baked moments."</p>
+                    <p className="text-lg md:text-xl italic my-2 text-neutral-400 text-center max-w-md">Bringing you the joy of freshly baked moments.</p>
                 </section>
 
 
