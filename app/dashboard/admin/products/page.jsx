@@ -156,7 +156,7 @@ const Products = () => {
     try {
       const response = await fetch(`${baseApi}/api/category/list-categories`);
       const data = await response.json();
-      console.log(data);
+      console.log("categories",data);
       setCategories(data);
     } catch (error) {
       console.error('Error fetching categories:', error);

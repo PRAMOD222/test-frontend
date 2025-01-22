@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table"
 import { MdDelete } from "react-icons/md";
 import { updatequantity, removeFromCart } from '@/store/cartSlice';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Link from "next/link";
 
 
@@ -20,6 +20,7 @@ const Cart = () => {
 
 
     const [cart, setCart] = useState(null);
+    const cartItems = useSelector((state) => state.cart.cartItems);
 
     const fetchCart = async () => {
         try {
@@ -91,6 +92,8 @@ const Cart = () => {
 
 
     useEffect(() => {
+        console.log('Cart Items:', cartItems);
+        
         const token = localStorage.getItem('token');
         if (token) {
             fetchCart();
@@ -110,7 +113,7 @@ const Cart = () => {
             </section> */}
             <div className="mx-6 md:mx-32 mt-10">
 
-                {cart && cart.length > 0 ? (
+                {cartItems && cartItems.length > 0 ? (
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -121,7 +124,7 @@ const Cart = () => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {cart.map((item) => (
+                            {cartItems.map((item) => (
                                 <TableRow key={item.product._id}>
                                     <TableCell className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-center md:justify-start">
                                         <Image

@@ -67,20 +67,18 @@ const Cart = () => {
         }
     };
 
-
-
-    
-
     useEffect(() => {
+        console.log('Cart Items:', cartItems);
+        
         const fetchCart = async () => {
             try {
                 const token = localStorage.getItem('token'); // Retrieve the token from localStorage or wherever you store it
-    
+
                 const response = await fetch(`${baseApi}/api/cart/fetch`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': token // Send the JWT token in the header
+                        'Authorization': token 
                     },
                 });
                 const data = await response.json();
@@ -90,7 +88,7 @@ const Cart = () => {
                     dispatch(updatequantity({ productId: item.product._id, quantity: item.quantity }))
                 }
                 );
-    
+
             } catch (error) {
                 console.error('Error fetching cart:', error);
             }
@@ -105,7 +103,7 @@ const Cart = () => {
 
             {/* Side Cart */}
             <Sheet open={isSideCartOpen} onOpenChange={() => dispatch(toggleSideCart())}>
-                <SheetContent className="bg-neutral-800 w-[16vw]">
+                <SheetContent className="bg-neutral-800 w-[70vw] sm:w-[90vw] md:w-[16vw]">
                     <SheetHeader className="text-white">
                         <SheetTitle>Your Cart</SheetTitle>
 
@@ -115,9 +113,7 @@ const Cart = () => {
                             <Link className='border rounded-xl bg-gray-800 px-2 py-1' href='/cart'>Go To Cart</Link>
                         </div>
                         <ScrollArea className="rounded-md h-[90vh]">
-
                             <div className="h-screen w-full space-y-6">
-
                                 {cartItems.map((product) => (
                                     <div key={product._id} className=" gap-4">
                                         {product && <Image className=' aspect-square object-cover rounded-md ' src={`${baseApi}/${product.image[0]}`} alt={product.name} width={200} height={200} />}
@@ -130,7 +126,6 @@ const Cart = () => {
                                                 min={1}
                                                 onChange={(e) => updateCartQuantity(product._id, parseInt(e.target.value))}
                                             />
-
                                             <MdDelete onClick={() => removeProductFromCart(product._id)} className='text-2xl cursor-pointer text-[#c19f5f]' />
 
                                         </div>

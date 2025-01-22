@@ -4,7 +4,9 @@ import withAuth from '@/utils/withAuth'
 
 const Page = () => {
   return (
-    <div>User Page</div>
+    <div>
+      
+    </div>
   )
 }
 
